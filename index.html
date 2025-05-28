@@ -1,0 +1,1882 @@
+<html class="scroll-smooth" lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Cybersecurity Exam Notes
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   body {
+      font-family: 'Inter', sans-serif;
+    }
+    /* Scrollbar for better UX */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #3b82f6;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #2563eb;
+    }
+    /* Animations */
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .fadeInUp {
+      animation: fadeInUp 0.8s ease forwards;
+    }
+    @keyframes pulseIcon {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.15);
+        opacity: 0.7;
+      }
+    }
+    .pulseIcon {
+      animation: pulseIcon 2s infinite;
+    }
+    /* Smooth anchor scroll offset for fixed header */
+    :target::before {
+      content: "";
+      display: block;
+      height: 5rem;
+      margin-top: -5rem;
+      visibility: hidden;
+    }
+  </style>
+ </head>
+ <body class="bg-gray-50 text-gray-800 selection:bg-blue-300 selection:text-white">
+  <header class="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
+   <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+     <a class="text-2xl font-bold text-blue-600 hover:text-blue-800 transition" href="#top" id="logo">
+      CyberSec Notes
+     </a>
+     <div class="hidden md:flex space-x-6 font-semibold text-gray-700" id="nav-links">
+      <button class="chapter-btn hover:text-blue-600 transition" data-chapter="chapter1" aria-label="Show Chapter 01">
+       <i class="fas fa-layer-group mr-1"></i> Chapter 01
+      </button>
+      <button class="chapter-btn hover:text-blue-600 transition" data-chapter="chapter2" aria-label="Show Chapter 02">
+       <i class="fas fa-user-secret mr-1"></i> Chapter 02
+      </button>
+      <button class="chapter-btn hover:text-blue-600 transition" data-chapter="chapter3" aria-label="Show Chapter 03">
+       <i class="fas fa-bug mr-1"></i> Chapter 03
+      </button>
+      <button class="chapter-btn hover:text-blue-600 transition" data-chapter="chapter4" aria-label="Show Chapter 04">
+       <i class="fas fa-wifi mr-1"></i> Chapter 04
+      </button>
+      <button class="chapter-btn hover:text-blue-600 transition" data-chapter="chapter5" aria-label="Show Chapter 05">
+       <i class="fas fa-shield-alt mr-1"></i> Chapter 05
+      </button>
+     </div>
+     <button aria-label="Toggle Menu" class="md:hidden focus:outline-none" id="menu-btn">
+      <i class="fas fa-bars text-2xl text-gray-700">
+      </i>
+     </button>
+    </div>
+   </nav>
+   <div class="hidden md:hidden bg-white shadow-inner" id="mobile-menu">
+    <button class="block w-full text-left px-4 py-3 border-b border-gray-200 hover:bg-blue-50 chapter-btn" data-chapter="chapter1" aria-label="Show Chapter 01">
+     <i class="fas fa-layer-group mr-2"></i> Chapter 01
+    </button>
+    <button class="block w-full text-left px-4 py-3 border-b border-gray-200 hover:bg-blue-50 chapter-btn" data-chapter="chapter2" aria-label="Show Chapter 02">
+     <i class="fas fa-user-secret mr-2"></i> Chapter 02
+    </button>
+    <button class="block w-full text-left px-4 py-3 border-b border-gray-200 hover:bg-blue-50 chapter-btn" data-chapter="chapter3" aria-label="Show Chapter 03">
+     <i class="fas fa-bug mr-2"></i> Chapter 03
+    </button>
+    <button class="block w-full text-left px-4 py-3 border-b border-gray-200 hover:bg-blue-50 chapter-btn" data-chapter="chapter4" aria-label="Show Chapter 04">
+     <i class="fas fa-wifi mr-2"></i> Chapter 04
+    </button>
+    <button class="block w-full text-left px-4 py-3 hover:bg-blue-50 chapter-btn" data-chapter="chapter5" aria-label="Show Chapter 05">
+     <i class="fas fa-shield-alt mr-2"></i> Chapter 05
+    </button>
+   </div>
+  </header>
+  <main class="pt-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen">
+   <!-- Chapters container -->
+   <section id="chapter1" class="fadeInUp">
+    <h2 class="text-4xl font-extrabold text-blue-700 mb-6 border-b-4 border-blue-300 pb-2 flex items-center space-x-3">
+     <i class="fas fa-layer-group text-blue-600 text-3xl pulseIcon"></i>
+     <span>Chapter 01: Fundamentals</span>
+    </h2>
+    <article class="prose max-w-none prose-blue">
+     <h3>
+      Important Notes with Full Forms and Examples:
+     </h3>
+     <p>
+      <strong>
+       Data Communication and Networking:
+      </strong>
+      This is about how information moves from one place to another using networks.
+     </p>
+     <div class="flex flex-col md:flex-row md:space-x-6 items-center bg-blue-50 rounded-lg p-4 shadow-md">
+      <img alt="Illustration of a smartphone sending data wirelessly via Wi-Fi signals to a server and then to another smartphone" class="rounded-lg shadow-lg mb-4 md:mb-0 md:w-48" height="150" src="https://storage.googleapis.com/a1aa/image/e72733fd-ee7d-42a7-9e2e-15ec09cc8b5f.jpg" width="200"/>
+      <div>
+       <p>
+        <em>
+         Example:
+        </em>
+        When you send a message on WhatsApp, your phone (sender) sends data through internet cables/Wi-Fi (media) to a server, and then to your friend's phone (receiver), following certain rules (protocols).
+       </p>
+      </div>
+     </div>
+     <h4 class="mt-8 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-project-diagram text-blue-600"></i>
+      <span>Network Reference Models</span>
+     </h4>
+     <p>
+      These are frameworks that describe how network communication works. They help different systems communicate.
+     </p>
+     <h5 class="mt-6 text-xl font-semibold text-blue-500 flex items-center space-x-2">
+      <i class="fas fa-layer-group"></i>
+      <span>Open Systems Interconnection Model</span>
+     </h5>
+     <p>
+      This model has seven layers, each with a specific job. Think of it like a step-by-step process for sending and receiving data.
+     </p>
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+      <div class="bg-white rounded-lg shadow p-4 border-l-8 border-blue-400 hover:shadow-lg transition">
+       <h6 class="font-semibold text-blue-700 flex items-center space-x-2">
+        <i class="fas fa-plug"></i>
+        <span>Physical Layer</span>
+       </h6>
+       <p>
+        Deals with the actual cables, Wi-Fi signals, and connectors.
+       </p>
+       <p class="italic text-sm text-gray-600">
+        Example: Ethernet cables, Wi-Fi radio waves.
+       </p>
+       <img alt="Close-up image showing Ethernet cables plugged into a router and Wi-Fi signal waves emitting from a router" class="mt-2 rounded-md shadow-sm" height="150" src="https://storage.googleapis.com/a1aa/image/f438ed4c-19b4-45e8-ca6c-91425a8137a6.jpg" width="300"/>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4 border-l-8 border-blue-400 hover:shadow-lg transition">
+       <h6 class="font-semibold text-blue-700 flex items-center space-x-2">
+        <i class="fas fa-network-wired"></i>
+        <span>Data Link Layer</span>
+       </h6>
+       <p>
+        Manages how data moves between devices on the same network. It handles Media Access Control addresses.
+       </p>
+       <p class="italic text-sm text-gray-600">
+        Example: A switch uses MAC addresses to send data to the correct device in a local network.
+       </p>
+       <img alt="Image of a network switch with blinking lights and MAC address labels on connected devices" class="mt-2 rounded-md shadow-sm" height="150" src="https://storage.googleapis.com/a1aa/image/abdc6a32-31bd-4d1f-5202-842310b2da44.jpg" width="300"/>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4 border-l-8 border-blue-400 hover:shadow-lg transition">
+       <h6 class="font-semibold text-blue-700 flex items-center space-x-2">
+        <i class="fas fa-route"></i>
+        <span>Network Layer</span>
+       </h6>
+       <p>
+        Handles routing of data packets across different networks. It uses Internet Protocol addresses.
+       </p>
+       <p class="italic text-sm text-gray-600">
+        Example: A router uses IP addresses to send your data from your home network to Google's servers.
+       </p>
+       <img alt="Router device with network map showing data packets traveling between home network and internet" class="mt-2 rounded-md shadow-sm" height="150" src="https://storage.googleapis.com/a1aa/image/434a6da7-b5bb-435f-b22d-820fe2056d7b.jpg" width="300"/>
+      </div>
+     </div>
+     <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mt-6">
+      <div class="bg-white rounded-lg shadow p-4 border-l-8 border-blue-400 hover:shadow-lg transition">
+       <h6 class="font-semibold text-blue-700 flex items-center space-x-2">
+        <i class="fas fa-exchange-alt"></i>
+        <span>Transport Layer</span>
+       </h6>
+       <p>
+        Ensures reliable, end-to-end delivery of data. It breaks data into segments and reassembles them. Transmission Control Protocol and User Datagram Protocol operate here.
+       </p>
+       <p class="italic text-sm text-gray-600">
+        Example: When you download a file, TCP ensures all parts of the file arrive correctly.
+       </p>
+       <img alt="Diagram showing TCP segments and UDP packets being sent and acknowledged" class="mt-2 rounded-md shadow-sm" height="150" src="https://storage.googleapis.com/a1aa/image/2cc899b5-dca9-4af0-8b84-92e768c9501a.jpg" width="250"/>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4 border-l-8 border-blue-400 hover:shadow-lg transition">
+       <h6 class="font-semibold text-blue-700 flex items-center space-x-2">
+        <i class="fas fa-comments"></i>
+        <span>Session Layer</span>
+       </h6>
+       <p>
+        Manages communication sessions between applications, like starting, managing, and ending conversations.
+       </p>
+       <p class="italic text-sm text-gray-600">
+        Example: When you log into a banking website, the session layer helps maintain your connection for that specific transaction.
+       </p>
+       <img alt="Illustration of a user logging into a banking website with session management icons" class="mt-2 rounded-md shadow-sm" height="150" src="https://storage.googleapis.com/a1aa/image/ca6d4d15-1396-4da6-7079-2b7076b3fb9f.jpg" width="250"/>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4 border-l-8 border-blue-400 hover:shadow-lg transition">
+       <h6 class="font-semibold text-blue-700 flex items-center space-x-2">
+        <i class="fas fa-file-code"></i>
+        <span>Presentation Layer</span>
+       </h6>
+       <p>
+        Translates data into a format that the application layer can understand. Handles encryption and decryption.
+       </p>
+       <p class="italic text-sm text-gray-600">
+        Example: Converts data formats like JPEG images or MP3 audio so your computer can display or play them.
+       </p>
+       <img alt="Visual showing encrypted data transforming into images and audio files" class="mt-2 rounded-md shadow-sm" height="150" src="https://storage.googleapis.com/a1aa/image/d8e29325-7050-47b1-f1a3-9d8ee382dbf2.jpg" width="250"/>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4 border-l-8 border-blue-400 hover:shadow-lg transition">
+       <h6 class="font-semibold text-blue-700 flex items-center space-x-2">
+        <i class="fas fa-desktop"></i>
+        <span>Application Layer</span>
+       </h6>
+       <p>
+        Provides network services to user applications.
+       </p>
+       <p class="italic text-sm text-gray-600">
+        Example: Web browsers (HTTP/HTTPS), email clients (SMTP, POP3).
+       </p>
+       <img alt="Image showing a web browser window and an email client interface" class="mt-2 rounded-md shadow-sm" height="150" src="https://storage.googleapis.com/a1aa/image/714fd2f0-7ac4-4683-8ab7-7cc13952b372.jpg" width="250"/>
+      </div>
+     </div>
+     <h4 class="mt-10 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-network-wired text-blue-600"></i>
+      <span>Transmission Control Protocol / Internet Protocol Model</span>
+     </h4>
+     <p>
+      A simpler, more practical model with four layers, widely used for the internet. It maps to the OSI model.
+     </p>
+     <ul class="list-disc list-inside space-y-1">
+      <li>
+       <strong>
+        Network Access Layer:
+       </strong>
+       Combines OSI's Physical and Data Link layers.
+      </li>
+      <li>
+       <strong>
+        Internet Layer:
+       </strong>
+       Corresponds to OSI's Network Layer (uses Internet Protocol).
+      </li>
+      <li>
+       <strong>
+        Transport Layer:
+       </strong>
+       Corresponds to OSI's Transport Layer (uses Transmission Control Protocol/User Datagram Protocol).
+      </li>
+      <li>
+       <strong>
+        Application Layer:
+       </strong>
+       Combines OSI's Session, Presentation, and Application layers.
+      </li>
+     </ul>
+     <h4 class="mt-10 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-handshake text-blue-600"></i>
+      <span>Three-Way Handshake (Transmission Control Protocol)</span>
+     </h4>
+     <p>
+      A three-step process to establish a reliable connection before data is sent using Transmission Control Protocol.
+     </p>
+     <div class="flex flex-col md:flex-row md:space-x-8 mt-6">
+      <div class="flex-1 bg-white rounded-lg shadow p-4 border-l-8 border-blue-400 hover:shadow-lg transition">
+       <h5 class="font-semibold text-blue-700 flex items-center space-x-2">
+        <i class="fas fa-paper-plane"></i>
+        <span>Step 1 (Synchronize)</span>
+       </h5>
+       <p>
+        Your computer sends a "Synchronize" message to a server to initiate a connection.
+       </p>
+       <img alt="Diagram showing a client computer sending a Synchronize packet to a server" class="mt-2 rounded-md shadow-sm" height="150" src="https://storage.googleapis.com/a1aa/image/0c0ece08-afd6-40b8-5501-f0ce31e1ee06.jpg" width="300"/>
+      </div>
+      <div class="flex-1 bg-white rounded-lg shadow p-4 border-l-8 border-blue-400 hover:shadow-lg transition mt-6 md:mt-0">
+       <h5 class="font-semibold text-blue-700 flex items-center space-x-2">
+        <i class="fas fa-reply"></i>
+        <span>Step 2 (Synchronize-Acknowledge)</span>
+       </h5>
+       <p>
+        The server receives Synchronize and sends back a "Synchronize-Acknowledge" message, acknowledging your Synchronize and sending its own Synchronize to you.
+       </p>
+       <img alt="Diagram showing a server sending a Synchronize-Acknowledge packet back to the client" class="mt-2 rounded-md shadow-sm" height="150" src="https://storage.googleapis.com/a1aa/image/e52ee262-5226-4953-2c6e-a2693ca4818d.jpg" width="300"/>
+      </div>
+      <div class="flex-1 bg-white rounded-lg shadow p-4 border-l-8 border-blue-400 hover:shadow-lg transition mt-6 md:mt-0">
+       <h5 class="font-semibold text-blue-700 flex items-center space-x-2">
+        <i class="fas fa-check"></i>
+        <span>Step 3 (Acknowledge)</span>
+       </h5>
+       <p>
+        Your computer sends an "Acknowledge" message back to the server, acknowledging its Synchronize-Acknowledge. Now the connection is established.
+       </p>
+       <img alt="Diagram showing a client sending an Acknowledge packet to the server to complete handshake" class="mt-2 rounded-md shadow-sm" height="150" src="https://storage.googleapis.com/a1aa/image/ea38d540-02a3-4505-d3e8-08e3acfc47a7.jpg" width="300"/>
+      </div>
+     </div>
+     <p class="mt-4 italic text-gray-600">
+      Example: Like two people saying "Hello?" "Hello, I hear you!" "Okay, let's talk."
+     </p>
+     <h4 class="mt-10 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-flag text-blue-600"></i>
+      <span>Transmission Control Protocol Flags</span>
+     </h4>
+     <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-4 mt-4">
+      <div class="bg-white rounded-lg shadow p-3 text-center border border-blue-300 hover:shadow-lg transition cursor-default">
+       <i class="fas fa-sync-alt text-blue-600 text-3xl mb-2 pulseIcon" title="Synchronize">
+       </i>
+       <h6 class="font-semibold text-blue-700">
+        Synchronize
+       </h6>
+       <p class="text-sm">
+        Used to initiate a connection.
+       </p>
+      </div>
+      <div class="bg-white rounded-lg shadow p-3 text-center border border-blue-300 hover:shadow-lg transition cursor-default">
+       <i class="fas fa-check-circle text-green-600 text-3xl mb-2 pulseIcon" title="Acknowledge">
+       </i>
+       <h6 class="font-semibold text-green-700">
+        Acknowledge
+       </h6>
+       <p class="text-sm">
+        Confirms receipt of data.
+       </p>
+      </div>
+      <div class="bg-white rounded-lg shadow p-3 text-center border border-blue-300 hover:shadow-lg transition cursor-default">
+       <i class="fas fa-flag-checkered text-red-600 text-3xl mb-2 pulseIcon" title="Finish">
+       </i>
+       <h6 class="font-semibold text-red-700">
+        Finish
+       </h6>
+       <p class="text-sm">
+        Used to terminate a connection.
+       </p>
+      </div>
+      <div class="bg-white rounded-lg shadow p-3 text-center border border-blue-300 hover:shadow-lg transition cursor-default">
+       <i class="fas fa-times-circle text-red-700 text-3xl mb-2 pulseIcon" title="Reset">
+       </i>
+       <h6 class="font-semibold text-red-800">
+        Reset
+       </h6>
+       <p class="text-sm">
+        Abruptly terminates a connection.
+       </p>
+      </div>
+      <div class="bg-white rounded-lg shadow p-3 text-center border border-blue-300 hover:shadow-lg transition cursor-default">
+       <i class="fas fa-arrow-circle-up text-yellow-600 text-3xl mb-2 pulseIcon" title="Push">
+       </i>
+       <h6 class="font-semibold text-yellow-700">
+        Push
+       </h6>
+       <p class="text-sm">
+        Forces data to be delivered immediately.
+       </p>
+      </div>
+      <div class="bg-white rounded-lg shadow p-3 text-center border border-blue-300 hover:shadow-lg transition cursor-default">
+       <i class="fas fa-exclamation-circle text-purple-600 text-3xl mb-2 pulseIcon" title="Urgent">
+       </i>
+       <h6 class="font-semibold text-purple-700">
+        Urgent
+       </h6>
+       <p class="text-sm">
+        Indicates urgent data.
+       </p>
+      </div>
+     </div>
+     <h4 class="mt-10 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-exchange-alt text-blue-600"></i>
+      <span>Network Address Translation</span>
+     </h4>
+     <p>
+      A method used by routers to allow multiple devices on a private network to share a single public Internet Protocol address when connecting to the internet.
+     </p>
+     <p class="italic text-gray-600">
+      Purpose: Saves public IP addresses and adds a layer of security by hiding internal IP addresses.
+     </p>
+     <div class="flex flex-col md:flex-row md:space-x-6 items-center bg-blue-50 rounded-lg p-4 shadow-md mt-4">
+      <img alt="Diagram showing a router mapping multiple private IP addresses to a single public IP address" class="rounded-lg shadow-lg mb-4 md:mb-0 md:w-48" height="150" src="https://storage.googleapis.com/a1aa/image/505c2363-8148-41eb-846b-dc12d46b4883.jpg" width="250"/>
+      <div>
+       <p>
+        <em>
+         Example:
+        </em>
+        Your router takes requests from your phone (private IP 192.168.1.10) and your laptop (private IP 192.168.1.11) and sends them to the internet using your home's single public IP address.
+       </p>
+      </div>
+     </div>
+     <h4 class="mt-10 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-cable-car text-blue-600"></i>
+      <span>Network Transmission Media</span>
+     </h4>
+     <p>
+      The physical pathways through which data travels.
+     </p>
+     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+      <div class="bg-white rounded-lg shadow p-4 border-l-8 border-blue-400 hover:shadow-lg transition">
+       <h5 class="font-semibold text-blue-700 flex items-center space-x-2">
+        <i class="fas fa-plug"></i>
+        <span>Guided Media</span>
+       </h5>
+       <p>
+        Data travels through a physical cable.
+       </p>
+       <ul class="list-disc list-inside space-y-1 mt-2">
+        <li>
+         <strong>
+          Twisted Pair Cable:
+         </strong>
+         Common for Ethernet networks. (Example: The blue cable connecting your computer to the router).
+        </li>
+        <li>
+         <strong>
+          Coaxial Cable:
+         </strong>
+         Used for cable TV and some older networks. (Example: The cable connecting your TV to the wall socket).
+        </li>
+        <li>
+         <strong>
+          Fiber Optic Cable:
+         </strong>
+         Uses light pulses, very fast and long distance. (Example: Modern high-speed internet connections).
+        </li>
+       </ul>
+       <img alt="Image showing twisted pair Ethernet cables and fiber optic cables side by side" class="mt-3 rounded-md shadow-sm" height="150" src="https://storage.googleapis.com/a1aa/image/739d0c9f-a1ab-4171-27d8-e8548458221e.jpg" width="300"/>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4 border-l-8 border-blue-400 hover:shadow-lg transition">
+       <h5 class="font-semibold text-blue-700 flex items-center space-x-2">
+        <i class="fas fa-wifi"></i>
+        <span>Unguided Media (Wireless)</span>
+       </h5>
+       <p>
+        Data travels through the air.
+       </p>
+       <ul class="list-disc list-inside space-y-1 mt-2">
+        <li>
+         <strong>
+          Radio Waves:
+         </strong>
+         Used for Wi-Fi, Bluetooth. (Example: Your phone connecting to a Wi-Fi router).
+        </li>
+        <li>
+         <strong>
+          Microwaves:
+         </strong>
+         Used for long-distance communication, satellite communication.
+        </li>
+        <li>
+         <strong>
+          Infrared:
+         </strong>
+         Used for short-range communication, like TV remotes.
+        </li>
+       </ul>
+       <img alt="Illustration of Wi-Fi and Bluetooth wireless signals transmitting through air" class="mt-3 rounded-md shadow-sm" height="150" src="https://storage.googleapis.com/a1aa/image/d7bc9e6b-0178-4005-5f53-433d51c85650.jpg" width="300"/>
+      </div>
+     </div>
+     <h4 class="mt-10 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-tools text-blue-600"></i>
+      <span>Network Devices</span>
+     </h4>
+     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-4">
+      <div class="bg-white rounded-lg shadow p-4 border border-blue-300 hover:shadow-lg transition cursor-default">
+       <i class="fas fa-hubspot text-blue-600 text-4xl mb-3 pulseIcon"></i>
+       <h6 class="font-semibold text-blue-700">
+        Hub
+       </h6>
+       <p>
+        Connects multiple devices and broadcasts all incoming data to all connected devices. (Older, inefficient).
+       </p>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4 border border-blue-300 hover:shadow-lg transition cursor-default">
+       <i class="fas fa-exchange-alt text-green-600 text-4xl mb-3 pulseIcon"></i>
+       <h6 class="font-semibold text-green-700">
+        Switch
+       </h6>
+       <p>
+        More intelligent than a hub, sends data only to the intended recipient using Media Access Control addresses.
+       </p>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4 border border-blue-300 hover:shadow-lg transition cursor-default">
+       <i class="fas fa-route text-purple-600 text-4xl mb-3 pulseIcon"></i>
+       <h6 class="font-semibold text-purple-700">
+        Router
+       </h6>
+       <p>
+        Connects different networks and forwards data packets between them using Internet Protocol addresses.
+       </p>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4 border border-blue-300 hover:shadow-lg transition cursor-default">
+       <i class="fas fa-link text-yellow-600 text-4xl mb-3 pulseIcon"></i>
+       <h6 class="font-semibold text-yellow-700">
+        Bridge
+       </h6>
+       <p>
+        Connects two separate network segments, often used to extend a network.
+       </p>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4 border border-blue-300 hover:shadow-lg transition cursor-default">
+       <i class="fas fa-broadcast-tower text-red-600 text-4xl mb-3 pulseIcon"></i>
+       <h6 class="font-semibold text-red-700">
+        Repeater
+       </h6>
+       <p>
+        Boosts a signal to extend its range.
+       </p>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4 border border-blue-300 hover:shadow-lg transition cursor-default">
+       <i class="fas fa-gateway text-indigo-600 text-4xl mb-3 pulseIcon"></i>
+       <h6 class="font-semibold text-indigo-700">
+        Gateway
+       </h6>
+       <p>
+        A device that connects two different networks that use different protocols.
+       </p>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4 border border-blue-300 hover:shadow-lg transition cursor-default">
+       <i class="fas fa-plug text-pink-600 text-4xl mb-3 pulseIcon"></i>
+       <h6 class="font-semibold text-pink-700">
+        Modulator-Demodulator
+       </h6>
+       <p>
+        Converts digital signals from your computer into analog signals for transmission over telephone lines or cable, and vice versa.
+       </p>
+      </div>
+     </div>
+     <h4 class="mt-10 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-shield-alt text-blue-600"></i>
+      <span>Information Security Definition</span>
+     </h4>
+     <p>
+      Protecting information and information systems from unauthorized access, use, disclosure, disruption, modification, or destruction.
+     </p>
+     <div class="flex flex-col md:flex-row md:space-x-6 items-center bg-blue-50 rounded-lg p-4 shadow-md mt-4">
+      <img alt="Visual representation of data protection with a lock and shield over digital data" class="rounded-lg shadow-lg mb-4 md:mb-0 md:w-48" height="150" src="https://storage.googleapis.com/a1aa/image/f6bd81c1-21e2-4b69-c45f-6c819849f12b.jpg" width="250"/>
+      <div>
+       <p>
+        <em>
+         Example:
+        </em>
+        Keeping your personal photos private, ensuring your online banking transactions are accurate, and being able to access your email whenever you need it.
+       </p>
+      </div>
+     </div>
+     <h4 class="mt-10 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-lock text-blue-600"></i>
+      <span>Information Security Goals (Confidentiality, Integrity, Availability Triad)</span>
+     </h4>
+     <ul class="list-disc list-inside space-y-3 mt-4">
+      <li>
+       <strong>
+        Confidentiality:
+       </strong>
+       Keeping sensitive information private and preventing unauthorized disclosure.
+       <p class="italic text-gray-600">
+        Example: Encrypting your emails so only the intended recipient can read them.
+       </p>
+      </li>
+      <li>
+       <strong>
+        Integrity:
+       </strong>
+       Ensuring that information is accurate, complete, and has not been altered without authorization.
+       <p class="italic text-gray-600">
+        Example: Making sure your bank balance displayed online is correct and hasn't been tampered with.
+       </p>
+      </li>
+      <li>
+       <strong>
+        Availability:
+       </strong>
+       Ensuring that authorized users can access information and systems when needed.
+       <p class="italic text-gray-600">
+        Example: A website always being accessible to its users, not crashing or being offline.
+       </p>
+      </li>
+     </ul>
+     <h4 class="mt-10 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-key text-blue-600"></i>
+      <span>Basic Concepts of Cryptography</span>
+     </h4>
+     <p>
+      The practice and study of techniques for secure communication in the presence of adversaries.
+     </p>
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+      <div class="bg-white rounded-lg shadow p-4 border-l-8 border-blue-400 hover:shadow-lg transition">
+       <h5 class="font-semibold text-blue-700 flex items-center space-x-2">
+        <i class="fas fa-lock"></i>
+        <span>Encryption</span>
+       </h5>
+       <p>
+        Converting plaintext (readable data) into ciphertext (unreadable, coded data) to protect it.
+       </p>
+       <img alt="Diagram showing plaintext being converted into ciphertext using encryption keys" class="mt-2 rounded-md shadow-sm" height="150" src="https://storage.googleapis.com/a1aa/image/3b9c75db-6fa7-4ab5-5ca8-be09ff17a8e7.jpg" width="250"/>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4 border-l-8 border-blue-400 hover:shadow-lg transition">
+       <h5 class="font-semibold text-blue-700 flex items-center space-x-2">
+        <i class="fas fa-unlock"></i>
+        <span>Decryption</span>
+       </h5>
+       <p>
+        Converting ciphertext back into plaintext.
+       </p>
+       <img alt="Diagram showing ciphertext being converted back into readable plaintext using decryption keys" class="mt-2 rounded-md shadow-sm" height="150" src="https://storage.googleapis.com/a1aa/image/e086575c-465c-4431-e5d7-8020de357153.jpg" width="250"/>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4 border-l-8 border-blue-400 hover:shadow-lg transition">
+       <h5 class="font-semibold text-blue-700 flex items-center space-x-2">
+        <i class="fas fa-key"></i>
+        <span>Keys</span>
+       </h5>
+       <p>
+        Secret values used in encryption and decryption.
+       </p>
+       <img alt="Visual showing symmetric and asymmetric keys used in cryptography" class="mt-2 rounded-md shadow-sm" height="150" src="https://storage.googleapis.com/a1aa/image/f98cd2f8-bb96-47b2-552e-a3c3cbf6f02c.jpg" width="250"/>
+      </div>
+     </div>
+     <h5 class="mt-8 text-xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-lock"></i>
+      <span>Symmetric-key Cryptography</span>
+     </h5>
+     <p>
+      Uses the same key for both encryption and decryption.
+     </p>
+     <p class="italic text-gray-600">
+      Example: Advanced Encryption Standard.
+     </p>
+     <h5 class="mt-6 text-xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-lock-open"></i>
+      <span>Asymmetric-key Cryptography (Public-key Cryptography)</span>
+     </h5>
+     <p>
+      Uses a pair of keys: a public key for encryption and a private key for decryption.
+     </p>
+     <p class="italic text-gray-600">
+      Example: Rivest–Shamir–Adleman used in HTTPS.
+     </p>
+     <h5 class="mt-6 text-xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-hashtag"></i>
+      <span>Hashing</span>
+     </h5>
+     <p>
+      A one-way mathematical function that converts data into a fixed-size string of characters (a hash value). It's used to verify data integrity. You cannot get the original data back from a hash.
+     </p>
+     <p class="italic text-gray-600">
+      Example: If you download a software file, its hash value can be compared to a known good hash to ensure the file hasn't been tampered with.
+     </p>
+     <img alt="Illustration showing data being hashed into a fixed-size hash value" class="mt-4 rounded-md shadow-sm" height="150" src="https://storage.googleapis.com/a1aa/image/b5089e01-fe76-480c-939e-09894f61e4dc.jpg" width="600"/>
+     <h5 class="mt-8 text-xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-eye-slash"></i>
+      <span>Steganography</span>
+     </h5>
+     <p>
+      The art and science of hiding the existence of a message, rather than just scrambling the message itself.
+     </p>
+     <p class="italic text-gray-600">
+      Example: Hiding a secret text message within an image file, so to a casual observer, it just looks like a picture.
+     </p>
+     <img alt="Image showing a normal picture with hidden text embedded inside it using steganography" class="mt-4 rounded-md shadow-sm" height="150" src="https://storage.googleapis.com/a1aa/image/ef8e62a0-3f66-4452-d597-95b0650da920.jpg" width="600"/>
+    </article>
+   </section>
+   <section id="chapter2" class="hidden fadeInUp">
+    <h2 class="text-4xl font-extrabold text-blue-700 mb-6 border-b-4 border-blue-300 pb-2 flex items-center space-x-3">
+     <i class="fas fa-user-secret text-blue-600 text-3xl pulseIcon"></i>
+     <span>Chapter 02: Hacking Concepts &amp; Cyber Law</span>
+    </h2>
+    <article class="prose max-w-none prose-blue">
+     <h3>
+      Important Notes with Full Forms and Examples:
+     </h3>
+     <h4 class="mt-6 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-user-hacker"></i>
+      <span>Hacking</span>
+     </h4>
+     <p>
+      Unauthorized access to or manipulation of computer systems, networks, or data.
+     </p>
+     <p class="italic text-gray-600">
+      Example: Gaining access to someone's email account without their permission.
+     </p>
+     <h4 class="mt-8 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-users-cog"></i>
+      <span>Types of Hacking and Hackers</span>
+     </h4>
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+      <div class="bg-white rounded-lg shadow p-4 border-l-8 border-blue-400 hover:shadow-lg transition">
+       <h5 class="font-semibold text-blue-700 flex items-center space-x-2">
+        <i class="fas fa-user-secret"></i>
+        <span>Black Hat Hackers</span>
+       </h5>
+       <p>
+        Individuals who engage in hacking with malicious intent for personal gain, destruction, or other illegal activities.
+       </p>
+       <p class="italic text-gray-600">
+        Example: Someone breaking into a company's database to steal customer credit card numbers.
+       </p>
+       <img alt="Image of a person wearing a black hoodie hacking on a computer in a dark room" class="mt-2 rounded-md shadow-sm" height="150" src="https://storage.googleapis.com/a1aa/image/84ea5db4-be43-450d-4331-e9778c709b1d.jpg" width="300"/>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4 border-l-8 border-green-400 hover:shadow-lg transition">
+       <h5 class="font-semibold text-green-700 flex items-center space-x-2">
+        <i class="fas fa-user-shield"></i>
+        <span>White Hat Hackers (Ethical Hackers)</span>
+       </h5>
+       <p>
+        Security professionals who use their hacking skills to identify and fix vulnerabilities in systems, with authorization.
+       </p>
+       <p class="italic text-gray-600">
+        Example: A security consultant hired by a bank to test its online banking system for weaknesses.
+       </p>
+       <img alt="Image of a professional ethical hacker working on a laptop with code on screen" class="mt-2 rounded-md shadow-sm" height="150" src="https://storage.googleapis.com/a1aa/image/4c864e07-84e1-49da-a71f-3f3779f8a17b.jpg" width="300"/>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4 border-l-8 border-yellow-400 hover:shadow-lg transition">
+       <h5 class="font-semibold text-yellow-700 flex items-center space-x-2">
+        <i class="fas fa-user-ninja"></i>
+        <span>Grey Hat Hackers</span>
+       </h5>
+       <p>
+        Individuals who find vulnerabilities without authorization but don't act maliciously.
+       </p>
+       <p class="italic text-gray-600">
+        Example: Someone finds a bug in a website, exploits it, and then informs the website owner.
+       </p>
+       <img alt="Image showing a hacker with a neutral expression working on a laptop" class="mt-2 rounded-md shadow-sm" height="150" src="https://storage.googleapis.com/a1aa/image/c68414b9-1ea0-49fd-9f3f-213767604fa8.jpg" width="300"/>
+      </div>
+     </div>
+     <h4 class="mt-10 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-exclamation-triangle"></i>
+      <span>Cybercrime</span>
+     </h4>
+     <p>
+      Criminal activities carried out using computers or the internet.
+     </p>
+     <p class="italic text-gray-600">
+      Example: Online fraud, identity theft, cyberbullying, spreading malware.
+     </p>
+     <h5 class="mt-6 text-xl font-semibold text-blue-600">
+      Types of Cybercrime
+     </h5>
+     <ul class="list-disc list-inside space-y-2">
+      <li>
+       <strong>
+        Cyberbullying:
+       </strong>
+       Harassing, threatening, or embarrassing someone online.
+      </li>
+      <li>
+       <strong>
+        Cyberstalking:
+       </strong>
+       Repeatedly harassing or threatening someone online, often escalating to real-life threats.
+      </li>
+      <li>
+       <strong>
+        Online Fraud:
+       </strong>
+       Deceptive practices conducted online to trick individuals out of money or information. (Example: Phishing scams).
+      </li>
+      <li>
+       <strong>
+        Intellectual Property Theft:
+       </strong>
+       Stealing copyrighted material, patents, or trade secrets online.
+      </li>
+      <li>
+       <strong>
+        Data Theft:
+       </strong>
+       Unauthorized copying or removal of data from a computer system.
+      </li>
+      <li>
+       <strong>
+        Identity Theft (including Password Theft):
+       </strong>
+       Stealing and using someone's personal information for fraudulent purposes.
+      </li>
+      <li>
+       <strong>
+        Cyberterrorism:
+       </strong>
+       Using computer networks to cause disruption or fear for political or ideological reasons.
+      </li>
+     </ul>
+     <h4 class="mt-10 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-bolt"></i>
+      <span>Classifications of Security Attacks</span>
+     </h4>
+     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+      <div class="bg-white rounded-lg shadow p-4 border-l-8 border-red-400 hover:shadow-lg transition">
+       <h5 class="font-semibold text-red-700 flex items-center space-x-2">
+        <i class="fas fa-eye"></i>
+        <span>Passive Attacks</span>
+       </h5>
+       <p>
+        Attacks that monitor or eavesdrop on network traffic without altering any data. The attacker's goal is to gain information.
+       </p>
+       <p class="italic text-gray-600">
+        Example: Snooping (secretly listening to conversations or monitoring network traffic).
+       </p>
+       <img alt="Illustration of a person secretly listening to network traffic on a computer" class="mt-2 rounded-md shadow-sm" height="150" src="https://storage.googleapis.com/a1aa/image/5d2e8e83-d923-4ba9-8f11-ab14b27cd9db.jpg" width="300"/>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4 border-l-8 border-red-600 hover:shadow-lg transition">
+       <h5 class="font-semibold text-red-800 flex items-center space-x-2">
+        <i class="fas fa-bomb"></i>
+        <span>Active Attacks</span>
+       </h5>
+       <p>
+        Attacks that modify, inject, or create data streams, or disrupt services. The attacker's goal is to alter system resources or affect their operation.
+       </p>
+       <p class="italic text-gray-600">
+        Example: Denial of Service attack, flooding a server with traffic.
+       </p>
+       <img alt="Diagram showing a server being overwhelmed by a flood of traffic in a Denial of Service attack" class="mt-2 rounded-md shadow-sm" height="150" src="https://storage.googleapis.com/a1aa/image/ee94cc80-19f6-4207-6f04-73d95a8d743d.jpg" width="300"/>
+      </div>
+     </div>
+     <h4 class="mt-10 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-book"></i>
+      <span>Essential Terminology</span>
+     </h4>
+     <ul class="list-disc list-inside space-y-2">
+      <li>
+       <strong>
+        Threat:
+       </strong>
+       A potential danger or possibility of an attack that could harm an asset.
+      </li>
+      <li>
+       <strong>
+        Vulnerability:
+       </strong>
+       A weakness or flaw in a system that can be exploited by a threat.
+      </li>
+      <li>
+       <strong>
+        Target of Evaluation:
+       </strong>
+       The specific system or component being evaluated for security.
+      </li>
+      <li>
+       <strong>
+        Attack:
+       </strong>
+       An attempt to exploit a vulnerability to gain unauthorized access or cause damage.
+      </li>
+      <li>
+       <strong>
+        Exploit:
+       </strong>
+       Software or technique that takes advantage of a vulnerability.
+      </li>
+     </ul>
+     <h4 class="mt-10 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-user-shield"></i>
+      <span>Concept of Ethical Hacking</span>
+     </h4>
+     <p>
+      Performing hacking activities with explicit permission to identify vulnerabilities and strengthen security.
+     </p>
+     <p class="italic text-gray-600">
+      Example: A company hires an ethical hacker to try and break into its corporate network to find security weaknesses.
+     </p>
+     <h4 class="mt-10 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-tasks"></i>
+      <span>Phases of Ethical Hacking</span>
+     </h4>
+     <ol class="list-decimal list-inside space-y-3">
+      <li>
+       <strong>
+        Reconnaissance (Information Gathering):
+       </strong>
+       Collecting information about the target system.
+      </li>
+      <li>
+       <strong>
+        Scanning:
+       </strong>
+       Using tools to identify open ports, services, and vulnerabilities.
+      </li>
+      <li>
+       <strong>
+        Gaining Access:
+       </strong>
+       Exploiting vulnerabilities to enter the system.
+      </li>
+      <li>
+       <strong>
+        Maintaining Access:
+       </strong>
+       Establishing persistent presence for future access.
+      </li>
+      <li>
+       <strong>
+        Clearing Tracks:
+       </strong>
+       Removing evidence of intrusion to avoid detection.
+      </li>
+     </ol>
+     <h4 class="mt-10 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-hands-helping"></i>
+      <span>Hacktivism</span>
+     </h4>
+     <p>
+      Hacking for political or social causes, combining hacking skills with activism.
+     </p>
+     <p class="italic text-gray-600">
+      Example: A group defacing a government website to protest a new law.
+     </p>
+     <h4 class="mt-10 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-gavel"></i>
+      <span>Cyber Law</span>
+     </h4>
+     <p>
+      The legal framework that governs activities in cyberspace. In India, the primary law is the Information Technology Act, 2000, with amendments.
+     </p>
+     <h4 class="mt-10 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-bomb"></i>
+      <span>Cyber Terrorism</span>
+     </h4>
+     <p>
+      The use of computer networks and the internet to carry out acts of terrorism, often involving large-scale disruption, fear, or violence.
+     </p>
+     <p class="italic text-gray-600">
+      Example: A group launching a cyberattack to disable a country's power grid, causing widespread chaos.
+     </p>
+     <h4 class="mt-10 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-exclamation-circle"></i>
+      <span>Offences Covered under Indian Cyber Laws</span>
+     </h4>
+     <ul class="list-disc list-inside space-y-2">
+      <li>
+       Hacking (Section 43, 66): Unauthorized access, damage to computer systems or data.
+      </li>
+      <li>
+       Data Theft: Illegally copying or extracting data.
+      </li>
+      <li>
+       Identity Theft (including Password Theft): Misappropriating or using someone else's identity or passwords.
+      </li>
+      <li>
+       Email Spoofing: Sending emails with a forged sender address to deceive the recipient.
+      </li>
+      <li>
+       Sending Offensive Messages: Messages that are grossly offensive or menacing.
+      </li>
+      <li>
+       Voyeurism: Capturing or transmitting images of a private area without consent.
+      </li>
+      <li>
+       Cyber Terrorism: Hacking intending to threaten India's unity, security, or to strike terror.
+      </li>
+     </ul>
+     <h4 class="mt-10 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-balance-scale"></i>
+      <span>Punishment for Cybercrime in India</span>
+     </h4>
+     <p>
+      Penalties vary depending on the severity and nature of the crime, including imprisonment (from months to life) and fines (thousands to lakhs of rupees).
+     </p>
+    </article>
+   </section>
+   <section id="chapter3" class="hidden fadeInUp">
+    <h2 class="text-4xl font-extrabold text-blue-700 mb-6 border-b-4 border-blue-300 pb-2 flex items-center space-x-3">
+     <i class="fas fa-bug text-blue-600 text-3xl pulseIcon"></i>
+     <span>Chapter 03: Malware, Denial of Service, Intrusion Detection/Prevention Systems &amp; Web Application Based Threats</span>
+    </h2>
+    <article class="prose max-w-none prose-blue">
+     <h3>
+      Important Notes with Full Forms and Examples:
+     </h3>
+     <h4 class="mt-6 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-virus"></i>
+      <span>Malware (Malicious Software)</span>
+     </h4>
+     <p>
+      Software designed to gain unauthorized access or damage a computer system without the user's knowledge or consent.
+     </p>
+     <p class="italic text-gray-600">
+      Example: A virus infecting your computer, or ransomware locking your files.
+     </p>
+     <h5 class="mt-6 text-xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-disease"></i>
+      <span>Types of Malware</span>
+     </h5>
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+      <div class="bg-white rounded-lg shadow p-4 border-l-8 border-red-400 hover:shadow-lg transition">
+       <h6 class="font-semibold text-red-700 flex items-center space-x-2">
+        <i class="fas fa-virus"></i>
+        <span>Virus</span>
+       </h6>
+       <p>
+        Attaches itself to legitimate programs or documents and spreads when executed. Requires human action.
+       </p>
+       <p class="italic text-gray-600">
+        Example: An infected email attachment that corrupts files when opened.
+       </p>
+       <img alt="Illustration of a virus infecting files on a computer" class="mt-2 rounded-md shadow-sm" height="150" src="https://storage.googleapis.com/a1aa/image/4aac4377-4d14-4c99-17ce-7203f505dafb.jpg" width="300"/>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4 border-l-8 border-red-400 hover:shadow-lg transition">
+       <h6 class="font-semibold text-red-700 flex items-center space-x-2">
+        <i class="fas fa-bug"></i>
+        <span>Worm</span>
+       </h6>
+       <p>
+        Standalone malware that self-replicates and spreads across networks without human interaction.
+       </p>
+       <p class="italic text-gray-600">
+        Example: A worm scanning a network and installing itself automatically.
+       </p>
+       <img alt="Diagram showing a worm spreading across multiple computers in a network" class="mt-2 rounded-md shadow-sm" height="150" src="https://storage.googleapis.com/a1aa/image/4afafab2-ba47-49ae-ecd3-2006aab9f9d1.jpg" width="300"/>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4 border-l-8 border-red-400 hover:shadow-lg transition">
+       <h6 class="font-semibold text-red-700 flex items-center space-x-2">
+        <i class="fas fa-horse"></i>
+        <span>Trojan Horse</span>
+       </h6>
+       <p>
+        Disguises as legitimate software but performs malicious actions once installed. Does not self-replicate.
+       </p>
+       <p class="italic text-gray-600">
+        Example: A free game that secretly installs a backdoor for remote access.
+       </p>
+       <img alt="Image showing a Trojan horse icon with a computer in the background" class="mt-2 rounded-md shadow-sm" height="150" src="https://storage.googleapis.com/a1aa/image/e7172fec-95d4-45bd-6f86-a49b267a9eb8.jpg" width="300"/>
+      </div>
+     </div>
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+      <div class="bg-white rounded-lg shadow p-4 border-l-8 border-red-400 hover:shadow-lg transition">
+       <h6 class="font-semibold text-red-700 flex items-center space-x-2">
+        <i class="fas fa-user-secret"></i>
+        <span>Spyware</span>
+       </h6>
+       <p>
+        Secretly gathers information about a user's activities and sends it to an attacker.
+       </p>
+       <p class="italic text-gray-600">
+        Example: Adware that tracks browsing habits.
+       </p>
+       <img alt="Illustration of spyware monitoring user activity on a computer" class="mt-2 rounded-md shadow-sm" height="150" src="https://storage.googleapis.com/a1aa/image/6bc623ce-4e0c-4d26-9591-566b7627c19e.jpg" width="300"/>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4 border-l-8 border-red-400 hover:shadow-lg transition">
+       <h6 class="font-semibold text-red-700 flex items-center space-x-2">
+        <i class="fas fa-ad"></i>
+        <span>Adware</span>
+       </h6>
+       <p>
+        Automatically displays or downloads unwanted advertisements, often bundled with free software.
+       </p>
+       <p class="italic text-gray-600">
+        Example: Pop-up ads appearing constantly after installing a free program.
+       </p>
+       <img alt="Image showing multiple pop-up ads on a computer screen" class="mt-2 rounded-md shadow-sm" height="150" src="https://storage.googleapis.com/a1aa/image/23e791ff-af45-41fc-7f6b-72e413d6bc3d.jpg" width="300"/>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4 border-l-8 border-red-400 hover:shadow-lg transition">
+       <h6 class="font-semibold text-red-700 flex items-center space-x-2">
+        <i class="fas fa-lock"></i>
+        <span>Ransomware</span>
+       </h6>
+       <p>
+        Encrypts files or locks a computer, then demands a ransom for decryption or unlocking.
+       </p>
+       <p class="italic text-gray-600">
+        Example: WannaCry ransomware encrypting thousands of computers worldwide.
+       </p>
+       <img alt="Screenshot of a ransomware lock screen demanding payment" class="mt-2 rounded-md shadow-sm" height="150" src="https://storage.googleapis.com/a1aa/image/291d46af-065b-42f1-02b5-3a202c07df53.jpg" width="300"/>
+      </div>
+     </div>
+     <h5 class="mt-8 text-xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-file-virus"></i>
+      <span>Types of Computer Viruses</span>
+     </h5>
+     <ul class="list-disc list-inside space-y-2">
+      <li>
+       <strong>
+        File Virus:
+       </strong>
+       Attaches to executable files (.exe, .com).
+      </li>
+      <li>
+       <strong>
+        Boot Sector Virus:
+       </strong>
+       Infects the boot sector of a hard drive or floppy disk.
+      </li>
+      <li>
+       <strong>
+        Macro Virus:
+       </strong>
+       Written in macro language, infects documents (Word, Excel).
+      </li>
+      <li>
+       <strong>
+        Email Virus:
+       </strong>
+       Spreads through email attachments.
+      </li>
+      <li>
+       <strong>
+        Multi-variant Virus (Polymorphic):
+       </strong>
+       Changes code each time it infects a new system.
+      </li>
+     </ul>
+     <h5 class="mt-8 text-xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-exclamation-circle"></i>
+      <span>Some Indications of a Malware Attack</span>
+     </h5>
+     <ul class="list-disc list-inside space-y-2">
+      <li>
+       Slow computer performance.
+      </li>
+      <li>
+       Frequent crashes or freezing.
+      </li>
+      <li>
+       Unusual pop-up advertisements.
+      </li>
+      <li>
+       Missing files or corrupted data.
+      </li>
+      <li>
+       Unknown programs running or suspicious network activity.
+      </li>
+      <li>
+       Browser homepage changes without your consent.
+      </li>
+     </ul>
+     <h5 class="mt-8 text-xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-shield-alt"></i>
+      <span>Popular Antivirus Programs</span>
+     </h5>
+     <p>
+      Software designed to detect, prevent, and remove malware.
+     </p>
+     <p class="italic text-gray-600">
+      Examples: Norton, McAfee, Avast, Bitdefender, Kaspersky, Windows Defender.
+     </p>
+     <h5 class="mt-8 text-xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-search"></i>
+      <span>Basic Idea of How Antivirus Identifies a Virus</span>
+     </h5>
+     <ul class="list-disc list-inside space-y-2">
+      <li>
+       <strong>
+        Signature-based Detection:
+       </strong>
+       Uses a database of known virus signatures to scan files.
+      </li>
+      <li>
+       <strong>
+        Heuristics-based Detection:
+       </strong>
+       Analyzes behavior of programs to flag suspicious actions.
+      </li>
+      <li>
+       <strong>
+        Cloud-based Detection:
+       </strong>
+       Uses real-time data from a global network of users for threat intelligence.
+      </li>
+     </ul>
+     <h5 class="mt-8 text-xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-globe"></i>
+      <span>VirusTotal Website</span>
+     </h5>
+     <p>
+      An online service that analyzes suspicious files and URLs for malware using multiple antivirus engines.
+     </p>
+     <p class="italic text-gray-600">
+      Example: Upload a suspicious email attachment to check if it is malicious before opening.
+     </p>
+     <h4 class="mt-10 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-ban"></i>
+      <span>Denial of Service Attack</span>
+     </h4>
+     <p>
+      An attack designed to make a machine or network resource unavailable by overwhelming it with requests or traffic.
+     </p>
+     <p class="italic text-gray-600">
+      Example: Flooding a website's server with so many requests that legitimate users cannot access it.
+     </p>
+     <h4 class="mt-10 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-network-wired"></i>
+      <span>Distributed Denial of Service Attack</span>
+     </h4>
+     <p>
+      A Denial of Service attack launched from multiple compromised systems simultaneously, making it harder to stop.
+     </p>
+     <p class="italic text-gray-600">
+      Example: Thousands of infected computers sending requests to a target server, bringing it down.
+     </p>
+     <h4 class="mt-10 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-search-plus"></i>
+      <span>Intrusion Detection System</span>
+     </h4>
+     <p>
+      Monitors network or system activities for malicious activities or policy violations and generates alerts.
+     </p>
+     <p class="italic text-gray-600">
+      Example: Detecting multiple failed login attempts from an unusual IP address.
+     </p>
+     <h4 class="mt-10 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-shield-alt"></i>
+      <span>Intrusion Prevention System</span>
+     </h4>
+     <p>
+      Detects intrusions and actively takes steps to prevent them from succeeding.
+     </p>
+     <p class="italic text-gray-600">
+      Example: Blocking traffic from a known attack source immediately.
+     </p>
+     <h4 class="mt-10 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-user-secret"></i>
+      <span>Snooping and Eavesdropping</span>
+     </h4>
+     <p>
+      Secretly listening to conversations or monitoring network traffic without authorization.
+     </p>
+     <p class="italic text-gray-600">
+      Example: Capturing Wi-Fi traffic to read unencrypted messages.
+     </p>
+     <h4 class="mt-10 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-keyboard"></i>
+      <span>Keyloggers</span>
+     </h4>
+     <p>
+      Software or hardware that records every keystroke made on a computer.
+     </p>
+     <p class="italic text-gray-600">
+      Example: A malicious keylogger capturing usernames and passwords on a public computer.
+     </p>
+     <h4 class="mt-10 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-firewall"></i>
+      <span>Firewall</span>
+     </h4>
+     <p>
+      A network security system that monitors and controls incoming and outgoing network traffic based on security rules.
+     </p>
+     <p class="italic text-gray-600">
+      Example: Blocking unknown applications from accessing the internet.
+     </p>
+     <h4 class="mt-10 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-robot"></i>
+      <span>Bots and Botnets (Zombies)</span>
+     </h4>
+     <p>
+      <strong>
+       Bot:
+      </strong>
+      A compromised computer controlled remotely by an attacker.
+     </p>
+     <p>
+      <strong>
+       Botnet:
+      </strong>
+      A network of bots used for coordinated malicious activities.
+     </p>
+     <p class="italic text-gray-600">
+      Example: A botnet launching a massive Denial of Service attack against a government website.
+     </p>
+     <h4 class="mt-10 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-globe"></i>
+      <span>Web Application Based Threats</span>
+     </h4>
+     <ul class="list-disc list-inside space-y-2">
+      <li>
+       <strong>
+        Cross-Site Scripting:
+       </strong>
+       Injecting malicious scripts into web pages viewed by others.
+      </li>
+      <li>
+       <strong>
+        Structured Query Language Injection:
+       </strong>
+       Inserting malicious SQL statements to attack data-driven applications.
+      </li>
+      <li>
+       <strong>
+        Command Injection:
+       </strong>
+       Executing arbitrary commands on the host operating system via vulnerable applications.
+      </li>
+      <li>
+       <strong>
+        Buffer Overflow:
+       </strong>
+       Writing more data into a buffer than it can hold, causing crashes or code execution.
+      </li>
+      <li>
+       <strong>
+        Directory Traversal:
+       </strong>
+       Accessing files outside the web server's root directory by manipulating URLs.
+      </li>
+      <li>
+       <strong>
+        Phishing Scams:
+       </strong>
+       Fraudulent attempts to obtain sensitive information by impersonation.
+      </li>
+      <li>
+       <strong>
+        Drive-by Downloads:
+       </strong>
+       Malicious downloads occurring without user knowledge when visiting compromised sites.
+      </li>
+     </ul>
+    </article>
+   </section>
+   <section id="chapter4" class="hidden fadeInUp">
+    <h2 class="text-4xl font-extrabold text-blue-700 mb-6 border-b-4 border-blue-300 pb-2 flex items-center space-x-3">
+     <i class="fas fa-wifi text-blue-600 text-3xl pulseIcon"></i>
+     <span>Chapter 04: Wireless Networking &amp; Protocols/Proxy</span>
+    </h2>
+    <article class="prose max-w-none prose-blue">
+     <h3>
+      Important Notes with Full Forms and Examples:
+     </h3>
+     <h4 class="mt-6 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-wifi"></i>
+      <span>Wireless Networking</span>
+     </h4>
+     <p>
+      A type of network that uses radio waves rather than physical cables to transmit data between devices.
+     </p>
+     <p class="italic text-gray-600">
+      Example: Your home Wi-Fi network that connects your phone, laptop, and smart TV without wires.
+     </p>
+     <h4 class="mt-8 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-cogs"></i>
+      <span>Wireless Standards</span>
+     </h4>
+     <p>
+      Rules and specifications that ensure compatibility and interoperability among wireless devices.
+     </p>
+     <p>
+      <strong>
+       Institute of Electrical and Electronics Engineers 802.11:
+      </strong>
+      Family of specifications for Wireless Local Area Networks (Wi-Fi). Versions include 802.11b, g, n, ac, ax (Wi-Fi 6).
+     </p>
+     <h4 class="mt-8 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-network-wired"></i>
+      <span>Common Terms Used in Wireless Networking</span>
+     </h4>
+     <ul class="list-disc list-inside space-y-2">
+      <li>
+       <strong>
+        Wireless Local Area Network:
+       </strong>
+       A local area network using radio waves instead of cables.
+      </li>
+      <li>
+       <strong>
+        Wireless Access Point:
+       </strong>
+       Device allowing Wi-Fi devices to connect to a wired network.
+      </li>
+      <li>
+       <strong>
+        Cellular:
+       </strong>
+       Mobile communication technology dividing areas into cells served by base stations.
+      </li>
+      <li>
+       <strong>
+        Attenuation:
+       </strong>
+       Reduction in signal strength over distance or obstacles.
+      </li>
+      <li>
+       <strong>
+        Antenna:
+       </strong>
+       Converts electrical power into radio waves and vice versa.
+      </li>
+      <li>
+       <strong>
+        Microwave:
+       </strong>
+       High-frequency radio waves for point-to-point wireless communication.
+      </li>
+      <li>
+       <strong>
+        Jamming:
+       </strong>
+       Intentional interference with wireless communications.
+      </li>
+      <li>
+       <strong>
+        Service Set Identifier:
+       </strong>
+       The name of a Wi-Fi network.
+      </li>
+      <li>
+       <strong>
+        Bluetooth:
+       </strong>
+       Short-range wireless technology for exchanging data.
+      </li>
+      <li>
+       <strong>
+        Wi-Fi Hotspots:
+       </strong>
+       Locations offering wireless internet access.
+      </li>
+     </ul>
+     <h4 class="mt-8 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-exclamation-triangle"></i>
+      <span>Wireless Attacks</span>
+     </h4>
+     <ul class="list-disc list-inside space-y-2">
+      <li>
+       <strong>
+        War Driving:
+       </strong>
+       Driving around to detect unprotected wireless networks.
+      </li>
+      <li>
+       <strong>
+        War Walking:
+       </strong>
+       Walking to detect wireless networks, often in urban areas.
+      </li>
+      <li>
+       <strong>
+        War Flying:
+       </strong>
+       Using drones to map wireless networks from the air.
+      </li>
+      <li>
+       <strong>
+        War Chalking:
+       </strong>
+       Drawing symbols in public places to indicate wireless network presence.
+      </li>
+      <li>
+       <strong>
+        Bluejacking:
+       </strong>
+       Sending unsolicited messages to nearby Bluetooth devices.
+      </li>
+     </ul>
+     <h4 class="mt-8 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-lock"></i>
+      <span>How to Secure Wireless Networks</span>
+     </h4>
+     <ul class="list-disc list-inside space-y-2">
+      <li>
+       Use strong passwords and encryption (WPA2 or WPA3).
+      </li>
+      <li>
+       Disable Service Set Identifier broadcast (limited security).
+      </li>
+      <li>
+       Media Access Control address filtering to allow only specific devices.
+      </li>
+      <li>
+       Enable firewall on router.
+      </li>
+      <li>
+       Keep firmware updated.
+      </li>
+      <li>
+       Use Virtual Private Network on public Wi-Fi.
+      </li>
+     </ul>
+     <h4 class="mt-8 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-network-wired"></i>
+      <span>Protocols and Proxy</span>
+     </h4>
+     <p>
+      A protocol is a set of rules governing data transmission. A port identifies a specific application or service.
+     </p>
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+      <div class="bg-white rounded-lg shadow p-4 border-l-8 border-blue-400 hover:shadow-lg transition">
+       <h5 class="font-semibold text-blue-700 flex items-center space-x-2">
+        <i class="fas fa-globe"></i>
+        <span>Hypertext Transfer Protocol</span>
+       </h5>
+       <p>
+        Fundamental protocol for transferring web pages over the internet.
+       </p>
+       <p>
+        <strong>
+         Default Port:
+        </strong>
+        80
+       </p>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4 border-l-8 border-blue-400 hover:shadow-lg transition">
+       <h5 class="font-semibold text-blue-700 flex items-center space-x-2">
+        <i class="fas fa-lock"></i>
+        <span>Hypertext Transfer Protocol Secure</span>
+       </h5>
+       <p>
+        Secure version of HTTP using Secure Sockets Layer or Transport Layer Security encryption.
+       </p>
+       <p>
+        <strong>
+         Default Port:
+        </strong>
+        443
+       </p>
+       <p class="italic text-gray-600">
+        Example: Padlock icon in browser URL bar.
+       </p>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4 border-l-8 border-blue-400 hover:shadow-lg transition">
+       <h5 class="font-semibold text-blue-700 flex items-center space-x-2">
+        <i class="fas fa-file-upload"></i>
+        <span>File Transfer Protocol</span>
+       </h5>
+       <p>
+        Used for transferring files between computers.
+       </p>
+       <p>
+        <strong>
+         Default Ports:
+        </strong>
+        20 (data), 21 (control)
+       </p>
+      </div>
+     </div>
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+      <div class="bg-white rounded-lg shadow p-4 border-l-8 border-blue-400 hover:shadow-lg transition">
+       <h5 class="font-semibold text-blue-700 flex items-center space-x-2">
+        <i class="fas fa-terminal"></i>
+        <span>Secure Shell</span>
+       </h5>
+       <p>
+        Cryptographic protocol for secure remote access.
+       </p>
+       <p>
+        <strong>
+         Default Port:
+        </strong>
+        22
+       </p>
+       <p class="italic text-gray-600">
+        Example: Admin logging into remote server securely.
+       </p>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4 border-l-8 border-blue-400 hover:shadow-lg transition">
+       <h5 class="font-semibold text-blue-700 flex items-center space-x-2">
+        <i class="fas fa-terminal"></i>
+        <span>Telecommunication Network</span>
+       </h5>
+       <p>
+        Older protocol for remote command-line access, insecure as it sends plaintext.
+       </p>
+       <p>
+        <strong>
+         Default Port:
+        </strong>
+        23
+       </p>
+       <p class="italic text-gray-600">
+        Replaced largely by Secure Shell.
+       </p>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4 border-l-8 border-blue-400 hover:shadow-lg transition">
+       <h5 class="font-semibold text-blue-700 flex items-center space-x-2">
+        <i class="fas fa-envelope"></i>
+        <span>Simple Mail Transfer Protocol</span>
+       </h5>
+       <p>
+        Used for sending outgoing email messages.
+       </p>
+       <p>
+        <strong>
+         Default Ports:
+        </strong>
+        25, 587 (secure submission)
+       </p>
+      </div>
+     </div>
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+      <div class="bg-white rounded-lg shadow p-4 border-l-8 border-blue-400 hover:shadow-lg transition">
+       <h5 class="font-semibold text-blue-700 flex items-center space-x-2">
+        <i class="fas fa-globe"></i>
+        <span>Domain Name System</span>
+       </h5>
+       <p>
+        Translates domain names into Internet Protocol addresses.
+       </p>
+       <p>
+        <strong>
+         Default Port:
+        </strong>
+        53
+       </p>
+       <p class="italic text-gray-600">
+        Example: google.com to 172.217.160.142
+       </p>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4 border-l-8 border-blue-400 hover:shadow-lg transition">
+       <h5 class="font-semibold text-blue-700 flex items-center space-x-2">
+        <i class="fas fa-envelope-open-text"></i>
+        <span>Post Office Protocol version 3</span>
+       </h5>
+       <p>
+        Used by email clients to retrieve email messages from a server.
+       </p>
+       <p>
+        <strong>
+         Default Port:
+        </strong>
+        110
+       </p>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4 border-l-8 border-blue-400 hover:shadow-lg transition">
+       <h5 class="font-semibold text-blue-700 flex items-center space-x-2">
+        <i class="fas fa-network-wired"></i>
+        <span>Proxy Concept</span>
+       </h5>
+       <p>
+        A proxy server acts as an intermediary for requests from clients seeking resources from other servers.
+       </p>
+       <p class="italic text-gray-600">
+        Example: Website sees proxy's IP, not yours.
+       </p>
+      </div>
+     </div>
+     <h4 class="mt-10 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-random"></i>
+      <span>Different Types of Proxy</span>
+     </h4>
+     <ul class="list-disc list-inside space-y-2">
+      <li>
+       <strong>
+        Forward Proxy:
+       </strong>
+       Forwards client requests to external servers, often used in corporate networks.
+      </li>
+      <li>
+       <strong>
+        Reverse Proxy:
+       </strong>
+       Intercepts requests to web servers, used for load balancing and security.
+      </li>
+      <li>
+       <strong>
+        Proxy Chain:
+       </strong>
+       Routing traffic through multiple proxies for enhanced anonymity.
+      </li>
+     </ul>
+    </article>
+   </section>
+   <section id="chapter5" class="hidden fadeInUp">
+    <h2 class="text-4xl font-extrabold text-blue-700 mb-6 border-b-4 border-blue-300 pb-2 flex items-center space-x-3">
+     <i class="fas fa-shield-alt text-blue-600 text-3xl pulseIcon"></i>
+     <span>Chapter 05: Stay Secure in the Digital World</span>
+    </h2>
+    <article class="prose max-w-none prose-blue">
+     <h3>
+      Important Notes with Full Forms and Examples:
+     </h3>
+     <h4 class="mt-6 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-key"></i>
+      <span>Usage of Password</span>
+     </h4>
+     <p>
+      Passwords are your primary defense for securing accounts and data.
+     </p>
+     <p class="italic text-gray-600">
+      Example: The password you use to log into your email or social media accounts.
+     </p>
+     <h4 class="mt-8 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-fingerprint"></i>
+      <span>Different Types of Password</span>
+     </h4>
+     <ul class="list-disc list-inside space-y-2">
+      <li>
+       <strong>
+        Biometric Password:
+       </strong>
+       Uses unique biological characteristics (fingerprint, facial recognition).
+      </li>
+      <li>
+       <strong>
+        Pattern-based Graphical Password:
+       </strong>
+       Uses a pattern drawn on a grid or image.
+      </li>
+     </ul>
+     <h4 class="mt-8 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-lock"></i>
+      <span>Strong Password Technique</span>
+     </h4>
+     <p>
+      Creating passwords that are difficult to guess or crack.
+     </p>
+     <ul class="list-disc list-inside space-y-2">
+      <li>
+       Length: At least 12-16 characters or more.
+      </li>
+      <li>
+       Complexity: Mix uppercase, lowercase, numbers, special characters.
+      </li>
+      <li>
+       Uniqueness: Don't reuse passwords across accounts.
+      </li>
+      <li>
+       No Personal Info: Avoid names, birthdates, pet names.
+      </li>
+      <li>
+       Phrase-based: Use memorable but long phrases.
+      </li>
+     </ul>
+     <p class="italic text-gray-600">
+      Example: "Ilovetoreadbooks@night!2025"
+     </p>
+     <h4 class="mt-8 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-exclamation-triangle"></i>
+      <span>Types of Password Attacks</span>
+     </h4>
+     <ul class="list-disc list-inside space-y-2">
+      <li>
+       <strong>
+        Brute Force Attack:
+       </strong>
+       Trying every possible combination until the password is found.
+      </li>
+      <li>
+       <strong>
+        Dictionary Attack:
+       </strong>
+       Trying common words and leaked passwords.
+      </li>
+      <li>
+       <strong>
+        Rainbow Table Attack:
+       </strong>
+       Using pre-computed tables of hashed passwords.
+      </li>
+      <li>
+       <strong>
+        Credential Stuffing:
+       </strong>
+       Using leaked username/password combos on other sites.
+      </li>
+      <li>
+       <strong>
+        Shoulder Surfing:
+       </strong>
+       Observing someone entering their password.
+      </li>
+     </ul>
+     <h4 class="mt-8 text-2xl font-semibold text-blue-600 flex items-center space-x-2">
+      <i class="fas fa-shield-alt"></i>
+      <span>Steps to Stay Secure in the Digital World</span>
+     </h4>
+     <ol class="list-decimal list-inside space-y-3">
+      <li>
+       <strong>
+        Have Strong Passwords:
+       </strong>
+       Use long, complex, unique passwords. Use password managers.
+      </li>
+      <li>
+       <strong>
+        Encrypt Your Data:
+       </strong>
+       Protect files and folders with encryption tools like BitLocker or FileVault.
+      </li>
+      <li>
+       <strong>
+        Security Suite Software:
+       </strong>
+       Install antivirus, anti-malware, anti-spyware software.
+      </li>
+      <li>
+       <strong>
+        Firewall Setup:
+       </strong>
+       Configure firewalls to control network traffic.
+      </li>
+      <li>
+       <strong>
+        Update Operating System:
+       </strong>
+       Regularly install updates and patches.
+      </li>
+      <li>
+       <strong>
+        Enable Two-Factor Authentication:
+       </strong>
+       Adds extra security beyond passwords.
+      </li>
+      <li>
+       <strong>
+        Backup Your Data:
+       </strong>
+       Regularly back up important files to external or cloud storage.
+      </li>
+      <li>
+       <strong>
+        Be Wary of Suspicious Links and Emails:
+       </strong>
+       Avoid clicking unknown links or downloading attachments.
+      </li>
+      <li>
+       <strong>
+        Use Public Wi-Fi with Caution:
+       </strong>
+       Avoid sensitive activities or use Virtual Private Networks.
+      </li>
+      <li>
+       <strong>
+        Be Mindful of Information Shared Online:
+       </strong>
+       Limit personal info on social media.
+      </li>
+     </ol>
+    </article>
+   </section>
+  </main>
+  <footer class="bg-white border-t mt-20 py-6 text-center text-gray-600 text-sm">
+  CyberSec Notes by Himangshu Paul.
+  </footer>
+  <script>
+   const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const chapterButtons = document.querySelectorAll('.chapter-btn');
+    const chapters = document.querySelectorAll('main section');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    function showChapter(chapterId) {
+      chapters.forEach(chap => {
+        if (chap.id === chapterId) {
+          chap.classList.remove('hidden');
+          chap.classList.add('fadeInUp');
+          chap.scrollIntoView({behavior: 'smooth'});
+        } else {
+          chap.classList.add('hidden');
+          chap.classList.remove('fadeInUp');
+        }
+      });
+    }
+
+    chapterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const chapterId = button.getAttribute('data-chapter');
+        showChapter(chapterId);
+        if (!mobileMenu.classList.contains('hidden')) {
+          mobileMenu.classList.add('hidden');
+        }
+      });
+    });
+
+    // Show chapter 1 by default
+    showChapter('chapter1');
+  </script>
+ </body>
+</html>
