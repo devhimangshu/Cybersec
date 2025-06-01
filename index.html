@@ -1,2863 +1,845 @@
-<html class="scroll-smooth" lang="en">
+<html lang="en">
  <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1" name="viewport"/>
   <title>
-   R Programming Modules - Interactive Guide
+   Tailwind E-commerce with Firebase
   </title>
   <script src="https://cdn.tailwindcss.com">
   </script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
   <style>
-   html {
-      scroll-behavior: smooth;
-    }
-    body {
+   body {
       font-family: 'Inter', sans-serif;
-    }
-    /* Continuous animations */
-    .spin-slow {
-      animation: spin 20s linear infinite;
-    }
-    .pulse-slow {
-      animation: pulse 4s ease-in-out infinite;
-    }
-    .bounce-slow {
-      animation: bounce 3s infinite;
-    }
-    /* Scroll animations */
-    [data-animate] {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    }
-    [data-animate].animate {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    /* Custom scrollbar for code blocks */
-    pre::-webkit-scrollbar {
-      height: 8px;
-    }
-    pre::-webkit-scrollbar-thumb {
-      background-color: #4f46e5;
-      border-radius: 4px;
     }
   </style>
  </head>
- <body class="bg-gray-50 text-gray-900 selection:bg-indigo-400 selection:text-white">
-  <!-- Header -->
-  <header class="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
-   <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
-    <a class="flex items-center space-x-2 text-indigo-600 font-extrabold text-xl" href="#top">
-     <i class="fas fa-code fa-lg spin-slow">
-     </i>
-     <span>
-      R Programming Guide
-     </span>
-    </a>
-    <ul class="hidden md:flex space-x-6 font-semibold text-gray-700">
-     <li>
-      <a class="hover:text-indigo-600 transition" href="#module1">
-       Module 1
+ <body class="bg-gray-50 min-h-screen flex flex-col">
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js">
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js">
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js">
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-storage-compat.js">
+  </script>
+  <!-- Navbar -->
+  <nav class="bg-white shadow-md sticky top-0 z-50">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16 items-center">
+     <div class="flex items-center space-x-4">
+      <a class="text-2xl font-bold text-indigo-600" href="#">
+       ShopEase
       </a>
-     </li>
-     <li>
-      <a class="hover:text-indigo-600 transition" href="#module2">
-       Module 2
-      </a>
-     </li>
-     <li>
-      <a class="hover:text-indigo-600 transition" href="#module3">
-       Module 3
-      </a>
-     </li>
-     <li>
-      <a class="hover:text-indigo-600 transition" href="#module4">
-       Module 4
-      </a>
-     </li>
-     <li>
-      <a class="hover:text-indigo-600 transition" href="#module5">
-       Module 5
-      </a>
-     </li>
-     <li>
-      <a class="hover:text-indigo-600 transition" href="#module6">
-       Module 6
-      </a>
-     </li>
-    </ul>
-    <button aria-label="Toggle Menu" class="md:hidden text-indigo-600 focus:outline-none" id="menu-btn">
-     <i class="fas fa-bars fa-lg">
-     </i>
-    </button>
-   </nav>
-   <div class="hidden md:hidden bg-white shadow-inner" id="mobile-menu">
-    <ul class="flex flex-col space-y-2 p-4 font-semibold text-gray-700">
-     <li>
-      <a class="block hover:text-indigo-600 transition" href="#module1">
-       Module 1
-      </a>
-     </li>
-     <li>
-      <a class="block hover:text-indigo-600 transition" href="#module2">
-       Module 2
-      </a>
-     </li>
-     <li>
-      <a class="block hover:text-indigo-600 transition" href="#module3">
-       Module 3
-      </a>
-     </li>
-     <li>
-      <a class="block hover:text-indigo-600 transition" href="#module4">
-       Module 4
-      </a>
-     </li>
-     <li>
-      <a class="block hover:text-indigo-600 transition" href="#module5">
-       Module 5
-      </a>
-     </li>
-     <li>
-      <a class="block hover:text-indigo-600 transition" href="#module6">
-       Module 6
-      </a>
-     </li>
-    </ul>
+      <div class="hidden md:flex space-x-6">
+       <a class="text-gray-700 hover:text-indigo-600 font-semibold" href="#products">
+        Products
+       </a>
+       <a class="text-gray-700 hover:text-indigo-600 font-semibold" href="#about">
+        About
+       </a>
+       <a class="text-gray-700 hover:text-indigo-600 font-semibold" href="#contact">
+        Contact
+       </a>
+      </div>
+     </div>
+     <div class="flex items-center space-x-4">
+      <button class="text-gray-700 hover:text-indigo-600 font-semibold" id="loginBtn">
+       Login
+      </button>
+      <button class="hidden text-gray-700 hover:text-indigo-600 font-semibold" id="logoutBtn">
+       Logout
+      </button>
+      <button class="relative text-gray-700 hover:text-indigo-600" id="cartBtn">
+       <i class="fas fa-shopping-cart fa-lg">
+       </i>
+       <span class="absolute -top-2 -right-2 bg-red-600 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center" id="cartCount">
+        0
+       </span>
+      </button>
+     </div>
+     <div class="-mr-2 flex md:hidden">
+      <button class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-600" id="mobileMenuBtn">
+       <i class="fas fa-bars fa-lg">
+       </i>
+      </button>
+     </div>
+    </div>
    </div>
-  </header>
-  <main class="pt-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20" id="top">
-   <!-- Module 1 -->
-   <section class="bg-white rounded-lg shadow-lg p-8" data-animate="" id="module1">
-    <div class="flex items-center space-x-4 mb-6">
-     <img alt="Stylized R programming language logo in blue and gray colors" class="rounded-full border-4 border-indigo-600 spin-slow" height="80" loading="lazy" src="https://storage.googleapis.com/a1aa/image/52ad787a-65dd-423f-68ed-622975a3c5ba.jpg" width="80"/>
-     <h2 class="text-3xl font-extrabold text-indigo-700">
-      Module 1: Getting Started, Background
-     </h2>
-    </div>
-    <!-- 1.1 Installing R on Windows -->
-    <article class="mb-8">
-     <h3 class="text-xl font-semibold text-indigo-600 mb-2 flex items-center space-x-2">
-      <i class="fas fa-download text-indigo-500">
-      </i>
-      <span>
-       1.1 Installing R on Windows
-      </span>
-     </h3>
-     <p class="mb-2">
-      <strong>
-       Concept:
-      </strong>
-      R is a free, open-source programming language and environment. RStudio is an Integrated Development Environment (IDE) that makes working with R much easier.
-     </p>
-     <ul class="list-disc list-inside space-y-1 mb-2">
-      <li>
-       Download R from CRAN (Comprehensive R Archive Network):
-       <a class="text-indigo-600 underline" href="https://cran.r-project.org" target="_blank">
-        cran.r-project.org
-       </a>
-       .
-      </li>
-      <li>
-       Download RStudio Desktop (Free version) from
-       <a class="text-indigo-600 underline" href="https://rstudio.com" target="_blank">
-        rstudio.com
-       </a>
-       .
-      </li>
-      <li>
-       Install R first, then RStudio.
-      </li>
-      <li>
-       RStudio provides a console, script editor, environment pane, plot pane, etc. for a better workflow.
-      </li>
-     </ul>
-     <p>
-      <strong>
-       Example (Conceptual):
-      </strong>
-      You'd typically double-click the downloaded .exe files and follow the installation wizard.
-     </p>
-    </article>
-    <!-- 1.2 Writing Code / Setting Your Working Directory (Windows) -->
-    <article class="mb-8">
-     <h3 class="text-xl font-semibold text-indigo-600 mb-2 flex items-center space-x-2">
-      <i class="fas fa-keyboard text-indigo-500">
-      </i>
-      <span>
-       1.2 Writing Code / Setting Your Working Directory (Windows)
-      </span>
-     </h3>
-     <p class="mb-2">
-      <strong>
-       Concept:
-      </strong>
-      R code can be written directly in the R Console (for single lines or testing). For multiple lines or saving your work, use an R Script file (.R extension) in RStudio's editor. The Working Directory is the default location where R reads files from and writes files to. It's crucial for managing your data and scripts.
-     </p>
-     <ul class="list-disc list-inside space-y-1 mb-2">
-      <li>
-       In RStudio: Use File → New File → R Script to open a script editor.
-      </li>
-      <li>
-       Run code from a script: Select lines and press Ctrl+Enter (Windows) or Cmd+Enter (Mac).
-      </li>
-      <li>
-       Setting Working Directory:
-       <ul class="list-disc list-inside ml-5">
-        <li>
-         Manually: Session → Set Working Directory → Choose Directory... (RStudio).
-        </li>
-        <li>
-         Programmatically:
-         <code>
-          setwd("path/to/your/folder")
-         </code>
-         . Use forward slashes
-         <code>
-          /
-         </code>
-         even on Windows, or double backslashes
-         <code>
-          \\
-         </code>
-         .
-        </li>
-       </ul>
-      </li>
-      <li>
-       Getting Working Directory:
-       <code>
-        getwd()
-       </code>
-      </li>
-     </ul>
-     <pre class="bg-gray-100 rounded-md p-4 overflow-x-auto text-sm font-mono text-indigo-900">
-# Writing code in a script and running
-# This is a comment
-result &lt;- 5 + 3
-print(result)
-
-# Setting working directory (Windows example)
-setwd("C:/Users/YourName/Documents/RProjects")
-
-# Getting current working directory
-current_dir &lt;- getwd()
-print(current_dir)
-        </pre>
-    </article>
-    <!-- 1.3 Overview and History of R -->
-    <article class="mb-8">
-     <h3 class="text-xl font-semibold text-indigo-600 mb-2 flex items-center space-x-2">
-      <i class="fas fa-history text-indigo-500">
-      </i>
-      <span>
-       1.3 Overview and History of R
-      </span>
-     </h3>
-     <p class="mb-2">
-      <strong>
-       Concept:
-      </strong>
-      R evolved from the S language, developed by Ross Ihaka and Robert Gentleman at the University of Auckland. It's now maintained by the R Core Team.
-     </p>
-     <ul class="list-disc list-inside space-y-1 mb-2">
-      <li>
-       Powerful for statistical modeling, data analysis, graphics, and machine learning.
-      </li>
-      <li>
-       Open-source and highly extensible through packages (libraries of functions and data).
-      </li>
-      <li>
-       Vibrant community and extensive documentation.
-      </li>
-      <li>
-       Emphasizes vectorized operations for efficiency.
-      </li>
-     </ul>
-    </article>
-    <!-- 1.4 R Console Input and Evaluation -->
-    <article>
-     <h3 class="text-xl font-semibold text-indigo-600 mb-2 flex items-center space-x-2">
-      <i class="fas fa-terminal text-indigo-500">
-      </i>
-      <span>
-       1.4 R Console Input and Evaluation
-      </span>
-     </h3>
-     <p class="mb-2">
-      <strong>
-       Concept:
-      </strong>
-      The R Console is an interactive command-line interface where you type R expressions, and R immediately evaluates them and prints the result.
-     </p>
-     <ul class="list-disc list-inside space-y-1 mb-2">
-      <li>
-       Expressions are evaluated from left to right.
-      </li>
-      <li>
-       Assignment operator:
-       <code>
-        &lt;-
-       </code>
-       (preferred) or
-       <code>
-        =
-       </code>
-       .
-      </li>
-      <li>
-       Case-sensitive (e.g.,
-       <code>
-        myVar
-       </code>
-       is different from
-       <code>
-        myvar
-       </code>
-       ).
-      </li>
-      <li>
-       Comments start with
-       <code>
-        #
-       </code>
-       .
-      </li>
-     </ul>
-     <pre class="bg-gray-100 rounded-md p-4 overflow-x-auto text-sm font-mono text-indigo-900">
-# Simple expression evaluation
-10 / 2 # Output: 5
-
-# Variable assignment
-x &lt;- 10
-y = 20 # less preferred
-z &lt;- x + y
-print(z) # Output: 30
-
-# Using functions
-sqrt(25) # Output: 5
-        </pre>
-     <h4 class="mt-4 font-semibold text-indigo-700">
-      Questions &amp; Brief Answers:
-     </h4>
-     <ol class="list-decimal list-inside space-y-1 text-gray-700">
-      <li>
-       <strong>
-        Q:
-       </strong>
-       What is RStudio, and how does it relate to R?
-       <br/>
-       <strong>
-        A:
-       </strong>
-       RStudio is an Integrated Development Environment (IDE) that provides a user-friendly interface for working with R, making coding, debugging, and project management easier. It runs on top of R.
-      </li>
-      <li>
-       <strong>
-        Q:
-       </strong>
-       How do you set your working directory in R programmatically, and why is it important?
-       <br/>
-       <strong>
-        A:
-       </strong>
-       Use
-       <code>
-        setwd("path/to/directory")
-       </code>
-       . It's important because it tells R where to look for data files and where to save output, ensuring your project files are organized and accessible.
-      </li>
-      <li>
-       <strong>
-        Q:
-       </strong>
-       What is the primary difference between typing code directly in the R Console and using an R Script file?
-       <br/>
-       <strong>
-        A:
-       </strong>
-       Console is for immediate evaluation and testing of single lines. Script files are for writing, saving, and executing multiple lines of code, enabling reproducibility and project management.
-      </li>
-      <li>
-       <strong>
-        Q:
-       </strong>
-       What symbol is used for comments in R?
-       <br/>
-       <strong>
-        A:
-       </strong>
-       <code>
-        #
-       </code>
-       .
-      </li>
-     </ol>
-    </article>
+   <!-- Mobile menu -->
+   <div class="hidden md:hidden bg-white border-t border-gray-200" id="mobileMenu">
+    <a class="block px-4 py-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 font-semibold" href="#products">
+     Products
+    </a>
+    <a class="block px-4 py-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 font-semibold" href="#about">
+     About
+    </a>
+    <a class="block px-4 py-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 font-semibold" href="#contact">
+     Contact
+    </a>
+    <button class="w-full text-left px-4 py-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 font-semibold" id="mobileLoginBtn">
+     Login
+    </button>
+    <button class="hidden w-full text-left px-4 py-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 font-semibold" id="mobileLogoutBtn">
+     Logout
+    </button>
+   </div>
+  </nav>
+  <!-- Main content -->
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+   <!-- Hero Section -->
+   <section class="text-center mb-12">
+    <h1 class="text-4xl sm:text-5xl font-extrabold text-indigo-600 mb-4">
+     Welcome to ShopEase
+    </h1>
+    <p class="text-gray-700 max-w-2xl mx-auto text-lg sm:text-xl">
+     Your one-stop shop for the best products at unbeatable prices.
+    </p>
    </section>
-   <!-- Module 2 -->
-   <section class="bg-white rounded-lg shadow-lg p-8" data-animate="" id="module2">
-    <div class="flex items-center space-x-4 mb-6">
-     <img alt="Abstract colorful data type icons representing vectors, lists, matrices, and data frames" class="rounded-full border-4 border-indigo-600 pulse-slow" height="80" loading="lazy" src="https://storage.googleapis.com/a1aa/image/ece8d746-9b97-4fb2-cff5-1ecbdaefb020.jpg" width="80"/>
-     <h2 class="text-3xl font-extrabold text-indigo-700">
-      Module 2: Data Types - R Objects and Attributes
-     </h2>
+   <!-- Products Section -->
+   <section class="mb-16" id="products">
+    <h2 class="text-3xl font-semibold text-gray-800 mb-8 text-center">
+     Featured Products
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8" id="productsGrid">
+     <!-- Products will be dynamically inserted here -->
     </div>
-    <!-- 2.1 R Objects and Attributes -->
-    <article class="mb-8">
-     <h3 class="text-xl font-semibold text-indigo-600 mb-2 flex items-center space-x-2">
-      <i class="fas fa-cubes text-indigo-500">
-      </i>
-      <span>
-       2.1 R Objects and Attributes
-      </span>
-     </h3>
-     <p class="mb-2">
-      <strong>
-       Concept:
-      </strong>
-      In R, everything is an object. Objects have attributes, which are metadata describing the object (e.g., names, dimensions, class).
-     </p>
-     <ul class="list-disc list-inside space-y-1 mb-2">
-      <li>
-       <code>
-        class()
-       </code>
-       : Returns the class of an object (its type).
-      </li>
-      <li>
-       <code>
-        typeof()
-       </code>
-       : Returns the type of storage of an object.
-      </li>
-      <li>
-       <code>
-        attributes()
-       </code>
-       : Returns all attributes of an object.
-      </li>
-     </ul>
-     <pre class="bg-gray-100 rounded-md p-4 overflow-x-auto text-sm font-mono text-indigo-900">
-x &lt;- c(1, 2, 3)
-class(x) # "numeric"
-typeof(x) # "double" (default numeric is double precision)
-attributes(x) # NULL (atomic vectors don't have many attributes by default)
-
-m &lt;- matrix(1:4, nrow=2)
-attributes(m) # Output includes 'dim' (dimensions)
-        </pre>
-    </article>
-    <!-- 2.2 Vectors and Lists -->
-    <article class="mb-8">
-     <h3 class="text-xl font-semibold text-indigo-600 mb-2 flex items-center space-x-2">
-      <i class="fas fa-list-ul text-indigo-500">
-      </i>
-      <span>
-       2.2 Vectors and Lists
-      </span>
-     </h3>
-     <p class="mb-2">
-      <strong>
-       Concept:
-      </strong>
-      Atomic Vectors are homogeneous collections of elements of the same type. Lists are heterogeneous collections that can contain different types of objects.
-     </p>
-     <ul class="list-disc list-inside space-y-1 mb-2">
-      <li>
-       Atomic Vectors types: logical, integer, numeric, complex, character, raw.
-      </li>
-      <li>
-       Lists can contain vectors, other lists, data frames, functions, etc.
-      </li>
-      <li>
-       Coercion hierarchy: logical → integer → numeric → character.
-      </li>
-      <li>
-       Accessing elements:
-       <code>
-        [ ]
-       </code>
-       for vectors,
-       <code>
-        [ ]
-       </code>
-       and
-       <code>
-        [[ ]]
-       </code>
-       for lists.
-      </li>
-     </ul>
-     <pre class="bg-gray-100 rounded-md p-4 overflow-x-auto text-sm font-mono text-indigo-900">
-# Atomic Vectors
-log_vec &lt;- c(TRUE, FALSE, TRUE)
-int_vec &lt;- c(1L, 2L, 3L)
-num_vec &lt;- c(1.5, 2.0, 3.5)
-char_vec &lt;- c("apple", "banana", "cherry")
-
-# Coercion example
-mixed_vec &lt;- c(1, "hello", TRUE)
-class(mixed_vec) # "character" (all coerced to character)
-
-# Lists
-my_nested_list &lt;- list(
-  num_data = c(10, 20, 30),
-  text_data = "sample text",
-  is_active = TRUE,
-  another_list = list(sub_item = 5)
-)
-        </pre>
-    </article>
-    <!-- 2.3 Matrices -->
-    <article class="mb-8">
-     <h3 class="text-xl font-semibold text-indigo-600 mb-2 flex items-center space-x-2">
-      <i class="fas fa-th-large text-indigo-500">
-      </i>
-      <span>
-       2.3 Matrices
-      </span>
-     </h3>
-     <p class="mb-2">
-      <strong>
-       Concept:
-      </strong>
-      2-dimensional, homogeneous data structures organized by rows and columns.
-     </p>
-     <ul class="list-disc list-inside space-y-1 mb-2">
-      <li>
-       Created using
-       <code>
-        matrix().
-       </code>
-      </li>
-      <li>
-       Arguments: data, nrow, ncol, byrow (default FALSE).
-      </li>
-      <li>
-       Dimensions accessed with
-       <code>
-        dim()
-       </code>
-       .
-      </li>
-      <li>
-       <code>
-        cbind()
-       </code>
-       and
-       <code>
-        rbind()
-       </code>
-       combine matrices/vectors.
-      </li>
-     </ul>
-     <pre class="bg-gray-100 rounded-md p-4 overflow-x-auto text-sm font-mono text-indigo-900">
-# Create a matrix filled by column (default)
-mat1 &lt;- matrix(1:6, nrow = 2, ncol = 3)
-# Output:
-#      [,1] [,2] [,3]
-# [1,]    1    3    5
-# [2,]    2    4    6
-
-# Create a matrix filled by row
-mat2 &lt;- matrix(1:6, nrow = 2, ncol = 3, byrow = TRUE)
-# Output:
-#      [,1] [,2] [,3]
-# [1,]    1    2    3
-# [2,]    4    5    6
-
-dim(mat1) # 2 3 (rows, columns)
-        </pre>
-    </article>
-    <!-- 2.4 Factors -->
-    <article class="mb-8">
-     <h3 class="text-xl font-semibold text-indigo-600 mb-2 flex items-center space-x-2">
-      <i class="fas fa-tags text-indigo-500">
-      </i>
-      <span>
-       2.4 Factors
-      </span>
-     </h3>
-     <p class="mb-2">
-      <strong>
-       Concept:
-      </strong>
-      Special vectors used to store categorical data with levels representing unique categories.
-     </p>
-     <ul class="list-disc list-inside space-y-1 mb-2">
-      <li>
-       Created using
-       <code>
-        factor()
-       </code>
-       .
-      </li>
-      <li>
-       Useful for statistical modeling.
-      </li>
-      <li>
-       <code>
-        levels()
-       </code>
-       retrieves levels,
-       <code>
-        nlevels()
-       </code>
-       retrieves number of levels.
-      </li>
-      <li>
-       Can be ordered or unordered.
-      </li>
-     </ul>
-     <pre class="bg-gray-100 rounded-md p-4 overflow-x-auto text-sm font-mono text-indigo-900">
-gender &lt;- factor(c("Male", "Female", "Male", "Female", "Male"))
-print(gender)
-# Output: [1] Male Female Male Female Male
-# Levels: Female Male
-
-levels(gender) # "Female" "Male"
-nlevels(gender) # 2
-
-# Ordered factor
-rating &lt;- factor(c("Good", "Bad", "Good", "Good", "Excellent"),
-                 levels = c("Bad", "Good", "Excellent"),
-                 ordered = TRUE)
-print(rating)
-        </pre>
-    </article>
-    <!-- 2.5 Missing Values -->
-    <article class="mb-8">
-     <h3 class="text-xl font-semibold text-indigo-600 mb-2 flex items-center space-x-2">
-      <i class="fas fa-exclamation-triangle text-indigo-500">
-      </i>
-      <span>
-       2.5 Missing Values
-      </span>
-     </h3>
-     <p class="mb-2">
-      <strong>
-       Concept:
-      </strong>
-      <code>
-       NA
-      </code>
-      represents missing values.
-     </p>
-     <ul class="list-disc list-inside space-y-1 mb-2">
-      <li>
-       Any operation involving
-       <code>
-        NA
-       </code>
-       typically results in
-       <code>
-        NA
-       </code>
-       .
-      </li>
-      <li>
-       Use
-       <code>
-        is.na()
-       </code>
-       to check for
-       <code>
-        NA
-       </code>
-       values.
-      </li>
-      <li>
-       Many functions have an
-       <code>
-        na.rm = TRUE
-       </code>
-       argument to remove
-       <code>
-        NA
-       </code>
-       s before calculation.
-      </li>
-     </ul>
-     <pre class="bg-gray-100 rounded-md p-4 overflow-x-auto text-sm font-mono text-indigo-900">
-data_with_na &lt;- c(10, 20, NA, 30, NA)
-is.na(data_with_na) # FALSE FALSE TRUE FALSE TRUE
-
-mean(data_with_na) # NA
-mean(data_with_na, na.rm = TRUE) # 20
-        </pre>
-    </article>
-    <!-- 2.6 Data Frames -->
-    <article class="mb-8">
-     <h3 class="text-xl font-semibold text-indigo-600 mb-2 flex items-center space-x-2">
-      <i class="fas fa-table text-indigo-500">
-      </i>
-      <span>
-       2.6 Data Frames
-      </span>
-     </h3>
-     <p class="mb-2">
-      <strong>
-       Concept:
-      </strong>
-      The most important data structure for tabular data in R. Each column can be a different data type, but all columns must have the same number of rows.
-     </p>
-     <ul class="list-disc list-inside space-y-1 mb-2">
-      <li>
-       Created using
-       <code>
-        data.frame()
-       </code>
-       .
-      </li>
-      <li>
-       <code>
-        nrow()
-       </code>
-       ,
-       <code>
-        ncol()
-       </code>
-       ,
-       <code>
-        dim()
-       </code>
-       give dimensions.
-      </li>
-      <li>
-       <code>
-        colnames()
-       </code>
-       ,
-       <code>
-        rownames()
-       </code>
-       for names.
-      </li>
-      <li>
-       <code>
-        str()
-       </code>
-       provides a summary of the structure.
-      </li>
-      <li>
-       <code>
-        summary()
-       </code>
-       provides statistical summary.
-      </li>
-     </ul>
-     <pre class="bg-gray-100 rounded-md p-4 overflow-x-auto text-sm font-mono text-indigo-900">
-students_df &lt;- data.frame(
-  ID = c(101, 102, 103),
-  Name = c("Alice", "Bob", "Charlie"),
-  Score = c(85, 92, 78),
-  IsGraduated = c(TRUE, FALSE, TRUE)
-)
-print(students_df)
-# Output:
-#   ID    Name Score IsGraduated
-# 1 101   Alice    85        TRUE
-# 2 102     Bob    92       FALSE
-# 3 103 Charlie    78        TRUE
-
-nrow(students_df) # 3
-ncol(students_df) # 4
-colnames(students_df) # "ID" "Name" "Score" "IsGraduated"
-        </pre>
-    </article>
-    <!-- 2.7 Names Attribute -->
-    <article class="mb-8">
-     <h3 class="text-xl font-semibold text-indigo-600 mb-2 flex items-center space-x-2">
-      <i class="fas fa-tag text-indigo-500">
-      </i>
-      <span>
-       2.7 Names Attribute
-      </span>
-     </h3>
-     <p class="mb-2">
-      <strong>
-       Concept:
-      </strong>
-      Allows you to assign names to elements of vectors, lists, and columns/rows of data frames/matrices.
-     </p>
-     <ul class="list-disc list-inside space-y-1 mb-2">
-      <li>
-       Can be set during creation or afterwards using
-       <code>
-        names()
-       </code>
-       ,
-       <code>
-        colnames()
-       </code>
-       ,
-       <code>
-        rownames()
-       </code>
-       .
-      </li>
-      <li>
-       Provides more readable and robust access to data than numeric indices.
-      </li>
-     </ul>
-     <pre class="bg-gray-100 rounded-md p-4 overflow-x-auto text-sm font-mono text-indigo-900">
-# Vector with names
-ages &lt;- c(Alice = 25, Bob = 30, Charlie = 22)
-names(ages) # "Alice" "Bob" "Charlie"
-ages["Bob"] # 30
-
-# List with names
-my_params &lt;- list(mean = 10, sd = 2)
-names(my_params) # "mean" "sd"
-my_params$mean # 10
-
-# Data frame column names are automatically set from creation
-# or can be set with colnames()
-colnames(students_df) &lt;- c("StudentID", "StudentName", "FinalScore", "Graduated")
-        </pre>
-    </article>
-    <!-- 2.8 Reading Tabular Data -->
-    <article class="mb-8">
-     <h3 class="text-xl font-semibold text-indigo-600 mb-2 flex items-center space-x-2">
-      <i class="fas fa-file-csv text-indigo-500">
-      </i>
-      <span>
-       2.8 Reading Tabular Data
-      </span>
-     </h3>
-     <p class="mb-2">
-      <strong>
-       Concept:
-      </strong>
-      Importing data from external files (e.g., CSV, TXT) into R.
-     </p>
-     <ul class="list-disc list-inside space-y-1 mb-2">
-      <li>
-       <code>
-        read.table()
-       </code>
-       : General function for reading tabular data.
-      </li>
-      <li>
-       <code>
-        read.csv()
-       </code>
-       : Wrapper for
-       <code>
-        read.table()
-       </code>
-       with comma delimiter and header by default.
-      </li>
-      <li>
-       <code>
-        read.delim()
-       </code>
-       : Wrapper for tab-separated files.
-      </li>
-     </ul>
-     <pre class="bg-gray-100 rounded-md p-4 overflow-x-auto text-sm font-mono text-indigo-900">
-# Assume 'my_data.csv' exists in your working directory:
-# ID,Name,Age
-# 1,Alice,25
-# 2,Bob,30
-
-# Reading a CSV file
-data_csv &lt;- read.csv("my_data.csv", stringsAsFactors = FALSE)
-print(data_csv)
-
-# Reading a tab-separated file (e.g., 'my_data.txt' with tabs)
-# 1\tAlice\t25
-# 2\tBob\t30
-data_txt &lt;- read.table("my_data.txt", header = TRUE, sep = "\t", stringsAsFactors = FALSE)
-print(data_txt)
-        </pre>
-    </article>
-    <!-- 2.9 Reading Large Tables -->
-    <article class="mb-8">
-     <h3 class="text-xl font-semibold text-indigo-600 mb-2 flex items-center space-x-2">
-      <i class="fas fa-database text-indigo-500">
-      </i>
-      <span>
-       2.9 Reading Large Tables
-      </span>
-     </h3>
-     <p class="mb-2">
-      <strong>
-       Concept:
-      </strong>
-      For very large files,
-      <code>
-       read.table()
-      </code>
-      can be slow and memory intensive.
-     </p>
-     <ul class="list-disc list-inside space-y-1 mb-2">
-      <li>
-       Specify
-       <code>
-        colClasses
-       </code>
-       argument to speed up reading by pre-allocating memory and avoiding type guessing.
-      </li>
-      <li>
-       Specify
-       <code>
-        nrows
-       </code>
-       to read only a certain number of rows (useful for testing or partial reads).
-      </li>
-      <li>
-       Specialized packages like
-       <code>
-        data.table
-       </code>
-       (
-       <code>
-        fread()
-       </code>
-       ) or
-       <code>
-        readr
-       </code>
-       (
-       <code>
-        read_csv()
-       </code>
-       ) are much faster for large datasets.
-      </li>
-     </ul>
-     <pre class="bg-gray-100 rounded-md p-4 overflow-x-auto text-sm font-mono text-indigo-900">
-# If 'large_data.csv' has columns: ID (integer), Name (character), Value (numeric)
-initial &lt;- read.csv("large_data.csv", nrows = 5) # Read first 5 rows to guess types
-classes &lt;- sapply(initial, class) # Get their classes
-# classes might be: c("integer", "character", "numeric") # Manually define if known
-
-large_data &lt;- read.csv("large_data.csv", colClasses = classes)
-        </pre>
-    </article>
-    <!-- 2.10 Textual Data Formats -->
-    <article class="mb-8">
-     <h3 class="text-xl font-semibold text-indigo-600 mb-2 flex items-center space-x-2">
-      <i class="fas fa-file-alt text-indigo-500">
-      </i>
-      <span>
-       2.10 Textual Data Formats
-      </span>
-     </h3>
-     <p class="mb-2">
-      <strong>
-       Concept:
-      </strong>
-      Common human-readable formats for data storage.
-     </p>
-     <ul class="list-disc list-inside space-y-1 mb-2">
-      <li>
-       CSV (Comma Separated Values): Values delimited by commas.
-      </li>
-      <li>
-       TSV (Tab Separated Values): Values delimited by tabs.
-      </li>
-      <li>
-       JSON (JavaScript Object Notation): Lightweight data-interchange format. R has packages like
-       <code>
-        jsonlite
-       </code>
-       to handle it.
-      </li>
-      <li>
-       XML (Extensible Markup Language): More verbose, hierarchical data format. R has packages like
-       <code>
-        XML
-       </code>
-       .
-      </li>
-     </ul>
-     <p>
-      <strong>
-       Example (Conceptual):
-      </strong>
-      Understanding the structure of a CSV for
-      <code>
-       read.csv()
-      </code>
-      . Knowing that for JSON/XML, you'd typically need specific R packages.
-     </p>
-    </article>
-    <!-- 2.11 Interfaces to the Outside World -->
-    <article>
-     <h3 class="text-xl font-semibold text-indigo-600 mb-2 flex items-center space-x-2">
-      <i class="fas fa-globe text-indigo-500">
-      </i>
-      <span>
-       2.11 Interfaces to the Outside World
-      </span>
-     </h3>
-     <p class="mb-2">
-      <strong>
-       Concept:
-      </strong>
-      R's ability to interact with databases, web APIs, and other systems.
-     </p>
-     <ul class="list-disc list-inside space-y-1 mb-2">
-      <li>
-       Databases: Packages like
-       <code>
-        RMySQL
-       </code>
-       ,
-       <code>
-        RPgSQL
-       </code>
-       ,
-       <code>
-        RODBC
-       </code>
-       ,
-       <code>
-        DBI
-       </code>
-       provide connectivity.
-      </li>
-      <li>
-       Web:
-       <code>
-        httr
-       </code>
-       package for interacting with web APIs.
-      </li>
-      <li>
-       Other Statistical Software: Packages like
-       <code>
-        foreign
-       </code>
-       can read data from SPSS, SAS, Stata.
-      </li>
-     </ul>
-     <pre class="bg-gray-100 rounded-md p-4 overflow-x-auto text-sm font-mono text-indigo-900">
-# Connecting to a database (conceptual)
-# library(DBI)
-# library(RSQLite)
-# con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
-# dbWriteTable(con, "mtcars", mtcars)
-# dbReadTable(con, "mtcars")
-# dbDisconnect(con)
-        </pre>
-     <h4 class="mt-4 font-semibold text-indigo-700">
-      Questions &amp; Brief Answers:
-     </h4>
-     <ol class="list-decimal list-inside space-y-1 text-gray-700">
-      <li>
-       <strong>
-        Q:
-       </strong>
-       What is the fundamental difference in homogeneity between a vector and a data frame?
-       <br/>
-       <strong>
-        A:
-       </strong>
-       A vector is homogeneous (all elements must be of the same type), while a data frame is heterogeneous (columns can be of different types, though elements within a column are of the same type).
-      </li>
-      <li>
-       <strong>
-        Q:
-       </strong>
-       You have
-       <code>
-        my_vec &lt;- c(10, "20", TRUE)
-       </code>
-       . What will
-       <code>
-        class(my_vec)
-       </code>
-       return and why?
-       <br/>
-       <strong>
-        A:
-       </strong>
-       "character" because R coerces all elements to the most flexible type when mixed, which is character in this case.
-      </li>
-      <li>
-       <strong>
-        Q:
-       </strong>
-       How do you create a matrix named
-       <code>
-        m
-       </code>
-       with 2 rows and 3 columns, filled by row with numbers 1 to 6?
-       <br/>
-       <strong>
-        A:
-       </strong>
-       <code>
-        m &lt;- matrix(1:6, nrow = 2, ncol = 3, byrow = TRUE)
-       </code>
-       .
-      </li>
-      <li>
-       <strong>
-        Q:
-       </strong>
-       What are
-       <code>
-        NA
-       </code>
-       values in R, and how do you handle them in a sum calculation?
-       <br/>
-       <strong>
-        A:
-       </strong>
-       <code>
-        NA
-       </code>
-       represents missing values. To sum, use
-       <code>
-        sum(vector_name, na.rm = TRUE)
-       </code>
-       .
-      </li>
-      <li>
-       <strong>
-        Q:
-       </strong>
-       Describe the
-       <code>
-        data.frame
-       </code>
-       structure. What is its common use?
-       <br/>
-       <strong>
-        A:
-       </strong>
-       A data frame is a 2D tabular structure where each column can have a different data type, but all columns have the same number of rows. It's commonly used for storing datasets, similar to a spreadsheet.
-      </li>
-      <li>
-       <strong>
-        Q:
-       </strong>
-       How do you read a CSV file named "students.csv" with a header row into a data frame called
-       <code>
-        student_data
-       </code>
-       , ensuring string columns are NOT converted to factors?
-       <br/>
-       <strong>
-        A:
-       </strong>
-       <code>
-        student_data &lt;- read.csv("students.csv", header = TRUE, stringsAsFactors = FALSE)
-       </code>
-       .
-      </li>
-     </ol>
-    </article>
    </section>
-   <!-- Module 3 -->
-   <section class="bg-white rounded-lg shadow-lg p-8" data-animate="" id="module3">
-    <div class="flex items-center space-x-4 mb-6">
-     <img alt="Illustration of data subsetting with highlighted rows and columns in a table" class="rounded-full border-4 border-indigo-600 bounce-slow" height="80" loading="lazy" src="https://storage.googleapis.com/a1aa/image/2342fc3d-4903-4467-36b7-7bf1d111cc3a.jpg" width="80"/>
-     <h2 class="text-3xl font-extrabold text-indigo-700">
-      Module 3: Subsetting
-     </h2>
-    </div>
-    <!-- 3.1 Basic Subsetting -->
-    <article class="mb-8">
-     <h3 class="text-xl font-semibold text-indigo-600 mb-2 flex items-center space-x-2">
-      <i class="fas fa-crop-alt text-indigo-500">
-      </i>
-      <span>
-       3.1 Basic Subsetting (Atomic Vectors, Lists, Matrices, Data Frames)
-      </span>
-     </h3>
-     <p class="mb-2">
-      <strong>
-       Concept:
-      </strong>
-      Extracting specific elements or subsets of R objects using various operators.
-     </p>
-     <ul class="list-disc list-inside space-y-1 mb-2">
-      <li>
-       <code>
-        [
-       </code>
-       operator: Most general subsetting operator. Can take integer, logical, or character vectors. Always returns an object of the same class as the original (unless
-       <code>
-        drop = TRUE
-       </code>
-       is used with matrices/data frames and a single dimension is selected).
-      </li>
-      <li>
-       Integer indices: Positive integers (select positions), negative integers (exclude positions), zero (returns empty object).
-      </li>
-      <li>
-       Logical indices: A logical vector (TRUE/FALSE) of the same length, selecting elements where TRUE.
-      </li>
-      <li>
-       Named indices (character vector): Selects elements by their names.
-      </li>
-     </ul>
-     <pre class="bg-gray-100 rounded-md p-4 overflow-x-auto text-sm font-mono text-indigo-900">
-my_vector &lt;- c("a", "b", "c", "d", "e")
-my_vector[1] # "a" (first element)
-my_vector[c(1, 3)] # "a" "c" (first and third)
-my_vector[-2] # "a" "c" "d" "e" (all except second)
-my_vector[c(TRUE, FALSE, TRUE, FALSE, TRUE)] # "a" "c" "e" (logical)
-names(my_vector) &lt;- c("one", "two", "three", "four", "five")
-my_vector["three"] # "c" (named)
-        </pre>
-    </article>
-    <!-- 3.2 Subsetting Lists -->
-    <article class="mb-8">
-     <h3 class="text-xl font-semibold text-indigo-600 mb-2 flex items-center space-x-2">
-      <i class="fas fa-list text-indigo-500">
-      </i>
-      <span>
-       3.2 Subsetting Lists
-      </span>
-     </h3>
-     <p class="mb-2">
-      <strong>
-       Concept:
-      </strong>
-      Lists require special attention for subsetting due to their heterogeneous nature.
-     </p>
-     <ul class="list-disc list-inside space-y-1 mb-2">
-      <li>
-       <code>
-        [
-       </code>
-       operator: Returns a list (subset of the original list), even if it contains only one element. Preserves the list structure.
-      </li>
-      <li>
-       <code>
-        [[
-       </code>
-       operator: Extracts a single element from a list. The result is the actual object inside that list element.
-      </li>
-      <li>
-       <code>
-        $
-       </code>
-       operator: A convenient shortcut for
-       <code>
-        [[
-       </code>
-       when extracting a single element by name.
-      </li>
-     </ul>
-     <pre class="bg-gray-100 rounded-md p-4 overflow-x-auto text-sm font-mono text-indigo-900">
-my_list &lt;- list(
-  vec = c(1, 2, 3),
-  char_val = "hello",
-  df = data.frame(X = 1:2, Y = c("A", "B"))
-)
-
-# Using [
-my_list[1]
-my_list["vec"] # Output: list(vec = 1:3) - still a list
-
-# Using [[
-my_list[[1]]
-my_list[["vec"]] # Output: 1 2 3 - the vector itself
-
-# Using $
-my_list$char_val # Output: "hello"
-my_list$df       # Output: the data frame itself
-        </pre>
-    </article>
-    <!-- 3.3 Subsetting Matrices -->
-    <article class="mb-8">
-     <h3 class="text-xl font-semibold text-indigo-600 mb-2 flex items-center space-x-2">
-      <i class="fas fa-th text-indigo-500">
-      </i>
-      <span>
-       3.3 Subsetting Matrices
-      </span>
-     </h3>
-     <p class="mb-2">
-      <strong>
-       Concept:
-      </strong>
-      Subsetting matrices uses
-      <code>
-       [row_index, col_index]
-      </code>
-      .
-     </p>
-     <ul class="list-disc list-inside space-y-1 mb-2">
-      <li>
-       Can use integer, logical, or named indices for rows and/or columns.
-      </li>
-      <li>
-       <code>
-        drop = TRUE
-       </code>
-       (default): If you select a single row or column, the result is "dropped" to the lowest possible dimension (e.g., a vector).
-      </li>
-      <li>
-       <code>
-        drop = FALSE
-       </code>
-       : Preserves the dimension, even if selecting a single row/column (returns a 1-row/1-column matrix).
-      </li>
-     </ul>
-     <pre class="bg-gray-100 rounded-md p-4 overflow-x-auto text-sm font-mono text-indigo-900">
-my_matrix &lt;- matrix(1:9, nrow = 3, byrow = TRUE,
-                    dimnames = list(c("R1", "R2", "R3"), c("C1", "C2", "C3")))
-# Output:
-#    C1 C2 C3
-# R1  1  2  3
-# R2  4  5  6
-# R3  7  8  9
-
-my_matrix[2, 3]       # Single element: 6
-my_matrix[1, ]        # First row (as vector due to drop=TRUE): 1 2 3
-my_matrix[, 2]        # Second column (as vector): 2 5 8
-my_matrix[c(1, 3), c(1, 3)] # Subset of rows and columns
-my_matrix[1, , drop = FALSE] # First row (as 1x3 matrix)
-my_matrix["R2", "C3"] # Subsetting by name: 6
-        </pre>
-    </article>
-    <!-- 3.4 Subsetting Data Frames -->
-    <article class="mb-8">
-     <h3 class="text-xl font-semibold text-indigo-600 mb-2 flex items-center space-x-2">
-      <i class="fas fa-table text-indigo-500">
-      </i>
-      <span>
-       3.4 Subsetting Data Frames
-      </span>
-     </h3>
-     <p class="mb-2">
-      <strong>
-       Concept:
-      </strong>
-      Data frames behave like lists of vectors for column selection and like matrices for
-      <code>
-       [row, col]
-      </code>
-      selection.
-     </p>
-     <ul class="list-disc list-inside space-y-1 mb-2">
-      <li>
-       <code>
-        df[row_indices, col_indices]
-       </code>
-       behaves like matrix subsetting.
-      </li>
-      <li>
-       <code>
-        df$column_name
-       </code>
-       or
-       <code>
-        df[["column_name"]]
-       </code>
-       extract a column as a vector.
-      </li>
-      <li>
-       <code>
-        df["column_name"]
-       </code>
-       returns a single-column data frame.
-      </li>
-      <li>
-       Logical subsetting of rows is very common for filtering data.
-      </li>
-     </ul>
-     <pre class="bg-gray-100 rounded-md p-4 overflow-x-auto text-sm font-mono text-indigo-900">
-data_df &lt;- data.frame(
-  Name = c("A", "B", "C", "D"),
-  Age = c(20, 22, 25, 20),
-  Score = c(90, 85, 95, 70)
-)
-
-data_df[1, 2]       # Age of first person: 20
-data_df$Score       # The Score column as a vector: 90 85 95 70
-data_df[["Name"]]   # The Name column as a vector: "A" "B" "C" "D"
-data_df["Age"]      # The Age column as a data frame:
-#   Age
-# 1  20
-# 2  22
-# 3  25
-# 4  20
-
-# Logical subsetting (filter rows)
-young_students &lt;- data_df[data_df$Age &lt; 25, ]
-# Output:
-#   Name Age Score
-# 1    A  20    90
-# 2    B  22    85
-# 4    D  20    70
-        </pre>
-    </article>
-    <!-- 3.5 Partial Matching -->
-    <article class="mb-8">
-     <h3 class="text-xl font-semibold text-indigo-600 mb-2 flex items-center space-x-2">
-      <i class="fas fa-search text-indigo-500">
-      </i>
-      <span>
-       3.5 Partial Matching
-      </span>
-     </h3>
-     <p class="mb-2">
-      <strong>
-       Concept:
-      </strong>
-      When using
-      <code>
-       $
-      </code>
-      or
-      <code>
-       [[ ]]
-      </code>
-      with character strings for names, R might perform partial matching if the full name isn't provided, as long as the partial string is unique. Generally, avoid relying on this for clarity and robustness.
-     </p>
-     <ul class="list-disc list-inside space-y-1 mb-2">
-      <li>
-       Only for named elements.
-      </li>
-      <li>
-       If multiple names match the partial string, it's an error.
-      </li>
-      <li>
-       <code>
-        options(warnPartialMatchDollar = TRUE)
-       </code>
-       can warn about this.
-      </li>
-     </ul>
-     <pre class="bg-gray-100 rounded-md p-4 overflow-x-auto text-sm font-mono text-indigo-900">
-my_list &lt;- list(long_name = 10, other_name = 20)
-my_list$long  # 10 (partial match)
-my_list$l     # 10 (partial match)
-
-# Example causing error due to ambiguity
-list_ambig &lt;- list(item1 = 1, item2 = 2)
-# list_ambig$item # Error: object 'item' not found
-        </pre>
-    </article>
-    <!-- 3.6 Removing Missing Values -->
-    <article class="mb-8">
-     <h3 class="text-xl font-semibold text-indigo-600 mb-2 flex items-center space-x-2">
-      <i class="fas fa-trash-alt text-indigo-500">
-      </i>
-      <span>
-       3.6 Removing Missing Values
-      </span>
-     </h3>
-     <p class="mb-2">
-      <strong>
-       Concept:
-      </strong>
-      Handling
-      <code>
-       NA
-      </code>
-      values in subsetting to obtain complete cases.
-     </p>
-     <ul class="list-disc list-inside space-y-1 mb-2">
-      <li>
-       <code>
-        is.na(x)
-       </code>
-       : Returns a logical vector, TRUE where
-       <code>
-        x
-       </code>
-       is
-       <code>
-        NA
-       </code>
-       .
-      </li>
-      <li>
-       <code>
-        complete.cases(...)
-       </code>
-       : Returns a logical vector indicating which rows/elements have no
-       <code>
-        NA
-       </code>
-       s.
-      </li>
-      <li>
-       Common pattern:
-       <code>
-        data[complete.cases(data), ]
-       </code>
-       to remove rows with
-       <code>
-        NA
-       </code>
-       s from a data frame.
-      </li>
-     </ul>
-     <pre class="bg-gray-100 rounded-md p-4 overflow-x-auto text-sm font-mono text-indigo-900">
-data_vec &lt;- c(1, 2, NA, 4, NA, 5)
-clean_vec &lt;- data_vec[!is.na(data_vec)] # Removes NAs
-print(clean_vec) # 1 2 4 5
-
-data_df_na &lt;- data.frame(
-  A = c(1, 2, NA),
-  B = c(NA, 4, 5),
-  C = c(7, 8, 9)
-)
-print(data_df_na)
-#    A  B C
-# 1  1 NA 7
-# 2  2  4 8
-# 3 NA  5 9
-
-complete_rows &lt;- complete.cases(data_df_na)
-print(complete_rows) # FALSE TRUE FALSE
-
-clean_df &lt;- data_df_na[complete_rows, ] # Only row 2 is complete
-print(clean_df)
-#   A B C
-# 2 2 4 8
-        </pre>
-    </article>
-    <!-- 3.7 Vectorized Operations -->
-    <article class="mb-8">
-     <h3 class="text-xl font-semibold text-indigo-600 mb-2 flex items-center space-x-2">
-      <i class="fas fa-bolt text-indigo-500">
-      </i>
-      <span>
-       3.7 Vectorized Operations
-      </span>
-     </h3>
-     <p class="mb-2">
-      <strong>
-       Concept:
-      </strong>
-      R's strength lies in performing operations on entire vectors or arrays at once, rather than element by element (which is what loops do). This is often much faster and more concise.
-     </p>
-     <ul class="list-disc list-inside space-y-1 mb-2">
-      <li>
-       Arithmetic operations (+, -, *, /, ^) and comparison operators (&gt;, &lt;, ==, !=) are vectorized.
-      </li>
-      <li>
-       Many built-in functions (e.g., sum(), mean(), log(), sqrt()) are vectorized.
-      </li>
-      <li>
-       Recycling: If two vectors have different lengths, the shorter one's elements are recycled to match the longer one. If lengths are not multiples, a warning is issued.
-      </li>
-     </ul>
-     <pre class="bg-gray-100 rounded-md p-4 overflow-x-auto text-sm font-mono text-indigo-900">
-vec1 &lt;- c(1, 2, 3)
-vec2 &lt;- c(10, 20, 30)
-vec1 + vec2 # Element-wise addition: 11 22 33
-vec1 * 2    # Multiply each element by 2: 2 4 6
-vec1 &gt; 1  # Logical comparison: FALSE TRUE TRUE
-
-# Recycling example
-vec_long &lt;- c(1, 2, 3, 4, 5, 6)
-vec_short &lt;- c(10, 20)
-vec_long + vec_short # Output: 11 22 13 24 15 26 (10, 20 recycled)
-        </pre>
-    </article>
-    <!-- 3.8 Working with swirl -->
-    <article>
-     <h3 class="text-xl font-semibold text-indigo-600 mb-2 flex items-center space-x-2">
-      <i class="fas fa-graduation-cap text-indigo-500">
-      </i>
-      <span>
-       3.8 Working with swirl
-      </span>
-     </h3>
-     <p class="mb-2">
-      <strong>
-       Concept:
-      </strong>
-      <code>
-       swirl
-      </code>
-      is an interactive R package that teaches R programming and data science in the R console itself. It's a hands-on learning tool.
-     </p>
-     <ul class="list-disc list-inside space-y-1 mb-2">
-      <li>
-       You install it (
-       <code>
-        install.packages("swirl")
-       </code>
-       ) and then load it (
-       <code>
-        library(swirl)
-       </code>
-       ).
-      </li>
-      <li>
-       Then type
-       <code>
-        swirl()
-       </code>
-       to start the interactive lessons.
-      </li>
-      <li>
-       It guides you through exercises and provides immediate feedback.
-      </li>
-     </ul>
-     <p>
-      <strong>
-       Example (Conceptual):
-      </strong>
-      Typing
-      <code>
-       swirl()
-      </code>
-      in the console and following the prompts to choose a course and start lessons.
-     </p>
-     <h4 class="mt-4 font-semibold text-indigo-700">
-      Questions &amp; Brief Answers:
-     </h4>
-     <ol class="list-decimal list-inside space-y-1 text-gray-700">
-      <li>
-       <strong>
-        Q:
-       </strong>
-       You have a list
-       <code>
-        my_data &lt;- list(values = c(1, 2, 3), settings = list(mode = "auto"))
-       </code>
-       . How do you extract the value
-       <code>
-        mode
-       </code>
-       from the
-       <code>
-        settings
-       </code>
-       list element?
-       <br/>
-       <strong>
-        A:
-       </strong>
-       <code>
-        my_data$settings$mode
-       </code>
-       or
-       <code>
-        my_data[["settings"]][["mode"]]
-       </code>
-       .
-      </li>
-      <li>
-       <strong>
-        Q:
-       </strong>
-       If you subset a matrix
-       <code>
-        m[1, ]
-       </code>
-       (selecting the first row), what is the default class of the returned object? How can you prevent this behavior?
-       <br/>
-       <strong>
-        A:
-       </strong>
-       By default, it returns a vector (due to
-       <code>
-        drop = TRUE
-       </code>
-       ). To prevent this, use
-       <code>
-        m[1, , drop = FALSE]
-       </code>
-       to return a 1-row matrix.
-      </li>
-      <li>
-       <strong>
-        Q:
-       </strong>
-       What is logical subsetting, and provide an example of filtering a vector
-       <code>
-        x &lt;- c(5, 12, 3, 8)
-       </code>
-       to get values greater than 7.
-       <br/>
-       <strong>
-        A:
-       </strong>
-       Logical subsetting uses a logical vector (TRUE/FALSE) to select elements. Example:
-       <code>
-        x[x &gt; 7]
-       </code>
-       will return 12 8.
-      </li>
-      <li>
-       <strong>
-        Q:
-       </strong>
-       Why are vectorized operations generally preferred over for loops in R for data manipulation?
-       <br/>
-       <strong>
-        A:
-       </strong>
-       They are typically much faster and more concise, leveraging R's underlying C/Fortran implementations for efficiency.
-      </li>
-      <li>
-       <strong>
-        Q:
-       </strong>
-       You have a data frame
-       <code>
-        df
-       </code>
-       with columns A, B, and C. How would you create a new data frame containing only rows where column A is not
-       <code>
-        NA
-       </code>
-       ?
-       <br/>
-       <strong>
-        A:
-       </strong>
-       <code>
-        df_clean &lt;- df[!is.na(df$A), ]
-       </code>
-       .
-      </li>
-     </ol>
-    </article>
+   <!-- About Section -->
+   <section class="mb-16 bg-white rounded-lg shadow-md p-8" id="about">
+    <h2 class="text-3xl font-semibold text-gray-800 mb-4">
+     About ShopEase
+    </h2>
+    <p class="text-gray-700 text-lg leading-relaxed">
+     ShopEase is a modern e-commerce platform built with the latest web technologies. We offer a wide range of products, from electronics to fashion, all at competitive prices. Our mission is to provide a seamless shopping experience with fast delivery and excellent customer service.
+    </p>
+    <img alt="E-commerce warehouse with boxes and packages ready for shipment" class="mt-6 rounded-lg shadow-md mx-auto" height="300" src="https://storage.googleapis.com/a1aa/image/76ebcc17-64f6-413b-427f-6d5ff619c712.jpg" width="600"/>
    </section>
-   <!-- Module 4 -->
-   <section class="bg-white rounded-lg shadow-lg p-8" data-animate="" id="module4">
-    <div class="flex items-center space-x-4 mb-6">
-     <img alt="Illustration of flowchart arrows representing control structures and functions" class="rounded-full border-4 border-indigo-600 spin-slow" height="80" loading="lazy" src="https://storage.googleapis.com/a1aa/image/36e14053-0105-4f0e-670c-0db6b1b9118f.jpg" width="80"/>
-     <h2 class="text-3xl font-extrabold text-indigo-700">
-      Module 4: Control Structures &amp; Functions
-     </h2>
-    </div>
-    <!-- 4.1 Control Structures -->
-    <article class="mb-8">
-     <h3 class="text-xl font-semibold text-indigo-600 mb-2 flex items-center space-x-2">
-      <i class="fas fa-code-branch text-indigo-500">
-      </i>
-      <span>
-       4.1 Control Structures
-      </span>
-     </h3>
-     <p class="mb-2">
-      <strong>
-       Concept:
-      </strong>
-      Statements that control the flow of execution in your R code based on conditions or iterations.
-     </p>
-     <ul class="list-disc list-inside space-y-1 mb-2">
-      <li>
-       Curly braces
-       <code>
-        {}
-       </code>
-       define code blocks.
-      </li>
-      <li>
-       <code>
-        if-else
-       </code>
-       : Conditional execution.
-      </li>
-      <li>
-       <code>
-        for
-       </code>
-       loops: Iterate over a sequence.
-      </li>
-      <li>
-       <code>
-        while
-       </code>
-       loops: Repeat while condition is TRUE.
-      </li>
-      <li>
-       <code>
-        repeat
-       </code>
-       : Infinite loop, must use
-       <code>
-        break
-       </code>
-       to exit.
-      </li>
-      <li>
-       <code>
-        next
-       </code>
-       : Skips current iteration.
-      </li>
-      <li>
-       <code>
-        break
-       </code>
-       : Exits loop entirely.
-      </li>
-     </ul>
-     <pre class="bg-gray-100 rounded-md p-4 overflow-x-auto text-sm font-mono text-indigo-900">
-# If-Else
-score &lt;- 75
-if (score &gt;= 90) {
-  grade &lt;- "A"
-} else if (score &gt;= 80) {
-  grade &lt;- "B"
-} else {
-  grade &lt;- "C"
-}
-print(grade) # "C"
-
-# For loop
-for (i in 1:5) {
-  print(paste("Number:", i))
-}
-
-# While loop
-count &lt;- 0
-while (count &lt; 3) {
-  print(paste("Count is:", count))
-  count &lt;- count + 1
-}
-
-# Next and Break
-for (num in 1:5) {
-  if (num == 3) {
-    next # Skip 3
-  }
-  if (num == 5) {
-    break # Exit when 5 is reached
-  }
-  print(num)
-}
-        </pre>
-    </article>
-    <!-- 4.2 Functions: User-Defined Functions, Anonymous Functions -->
-    <article>
-     <h3 class="text-xl font-semibold text-indigo-600 mb-2 flex items-center space-x-2">
-      <i class="fas fa-function text-indigo-500">
-      </i>
-      <span>
-       4.2 Functions: User-Defined Functions, Anonymous Functions
-      </span>
-     </h3>
-     <p class="mb-2">
-      <strong>
-       Concept:
-      </strong>
-      Functions are reusable blocks of code that perform a specific task. They promote modularity, readability, and avoid code repetition.
-     </p>
-     <ul class="list-disc list-inside space-y-1 mb-2">
-      <li>
-       Syntax:
-       <code>
-        function_name &lt;- function(arg1, arg2, ...) { body }
-       </code>
-       .
-      </li>
-      <li>
-       Arguments can have default values.
-      </li>
-      <li>
-       Return value is the last evaluated expression or explicit
-       <code>
-        return()
-       </code>
-       .
-      </li>
-      <li>
-       Anonymous functions are unnamed and often used as arguments to higher-order functions.
-      </li>
-     </ul>
-     <pre class="bg-gray-100 rounded-md p-4 overflow-x-auto text-sm font-mono text-indigo-900">
-# User-Defined Function
-calculate_avg &lt;- function(numbers) {
-  if (length(numbers) == 0) {
-    warning("Input vector is empty.")
-    return(NA)
-  }
-  return(sum(numbers) / length(numbers))
-}
-calculate_avg(c(10, 20, 30)) # 20
-calculate_avg(c())           # Returns NA, prints warning
-
-# Function with default argument
-greet &lt;- function(name = "Guest") {
-  print(paste("Hello,", name))
-}
-greet("Alice") # "Hello, Alice"
-greet()        # "Hello, Guest"
-
-# Anonymous Function (conceptual)
-# function(x) { x * 2 }
-# Used like: lapply(list_of_numbers, function(x) x * 2)
-        </pre>
-     <h4 class="mt-4 font-semibold text-indigo-700">
-      Questions &amp; Brief Answers:
-     </h4>
-     <ol class="list-decimal list-inside space-y-1 text-gray-700">
-      <li>
-       <strong>
-        Q:
-       </strong>
-       Write an if-else statement that prints "Positive" if a variable
-       <code>
-        num
-       </code>
-       is greater than 0, and "Non-positive" otherwise.
-       <br/>
-       <strong>
-        A:
-       </strong>
-       <pre class="inline-block bg-gray-100 p-1 rounded text-indigo-900 font-mono text-sm">if (num &gt; 0) { print("Positive") } else { print("Non-positive") }</pre>
-      </li>
-      <li>
-       <strong>
-        Q:
-       </strong>
-       When is a while loop more appropriate than a for loop?
-       <br/>
-       <strong>
-        A:
-       </strong>
-       When the number of iterations is unknown and depends on a condition being met.
-      </li>
-      <li>
-       <strong>
-        Q:
-       </strong>
-       What is the purpose of the
-       <code>
-        next
-       </code>
-       statement in a loop?
-       <br/>
-       <strong>
-        A:
-       </strong>
-       It skips the current iteration and moves to the next.
-      </li>
-      <li>
-       <strong>
-        Q:
-       </strong>
-       Define a user-defined function named
-       <code>
-        square_number
-       </code>
-       that takes one argument
-       <code>
-        x
-       </code>
-       and returns its square.
-       <br/>
-       <strong>
-        A:
-       </strong>
-       <pre class="inline-block bg-gray-100 p-1 rounded text-indigo-900 font-mono text-sm">square_number &lt;- function(x) { return(x^2) }</pre>
-      </li>
-      <li>
-       <strong>
-        Q:
-       </strong>
-       What is an "anonymous function" and where are they commonly used in R?
-       <br/>
-       <strong>
-        A:
-       </strong>
-       A function without a name, commonly used as arguments to higher-order functions like
-       <code>
-        lapply
-       </code>
-       ,
-       <code>
-        sapply
-       </code>
-       .
-      </li>
-     </ol>
-    </article>
-   </section>
-   <!-- Module 5 -->
-   <section class="bg-white rounded-lg shadow-lg p-8" data-animate="" id="module5">
-    <div class="flex items-center space-x-4 mb-6">
-     <img alt="Abstract clock and code symbol representing scoping rules and date/time handling in R" class="rounded-full border-4 border-indigo-600 pulse-slow" height="80" loading="lazy" src="https://storage.googleapis.com/a1aa/image/488202bf-facc-4cce-ef70-aaff15aea95b.jpg" width="80"/>
-     <h2 class="text-3xl font-extrabold text-indigo-700">
-      Module 5: Scoping Rules &amp; Dates/Times
-     </h2>
-    </div>
-    <!-- 5.1 Scoping Rules -->
-    <article class="mb-8">
-     <h3 class="text-xl font-semibold text-indigo-600 mb-2 flex items-center space-x-2">
-      <i class="fas fa-search-location text-indigo-500">
-      </i>
-      <span>
-       5.1 Scoping Rules - Symbol Binding, R Scoping Rules
-      </span>
-     </h3>
-     <p class="mb-2">
-      <strong>
-       Concept:
-      </strong>
-      Scoping rules determine how R finds the value of a symbol (variable name) when it's used in code, especially within functions. R uses lexical scoping.
-     </p>
-     <ul class="list-disc list-inside space-y-1 mb-2">
-      <li>
-       Lexical Scoping: R looks for a variable's value in the environment where the function was defined (its parent environment), not where it was called.
-      </li>
-      <li>
-       Search Path: function's own environment → enclosing environment → global environment → namespaces of loaded packages.
-      </li>
-      <li>
-       Variables defined inside a function are local to that function and disappear after execution.
-      </li>
-     </ul>
-     <pre class="bg-gray-100 rounded-md p-4 overflow-x-auto text-sm font-mono text-indigo-900">
-# Example 1: Local variable takes precedence
-y &lt;- 10 # Global environment
-f &lt;- function(x) {
-  y &lt;- 20 # 'y' local to function f
-  print(x + y)
-}
-f(5)    # Output: 25 (5 + 20)
-print(y) # Output: 10 (global 'y' unchanged)
-
-# Example 2: Lexical scoping in nested functions
-make.power &lt;- function(n) {
-  pow &lt;- function(x) {
-    return(x^n) # 'n' found in enclosing environment
-  }
-  return(pow)
-}
-cube &lt;- make.power(3)
-cube(2)  # Output: 8 (2^3)
-square &lt;- make.power(2)
-square(3) # Output: 9 (3^2)
-        </pre>
-    </article>
-    <!-- 5.2 Optimization Example / Coding Standards -->
-    <article class="mb-8">
-     <h3 class="text-xl font-semibold text-indigo-600 mb-2 flex items-center space-x-2">
-      <i class="fas fa-tachometer-alt text-indigo-500">
-      </i>
-      <span>
-       5.2 Optimization Example / Coding Standards
-      </span>
-     </h3>
-     <p class="mb-2">
-      <strong>
-       Concept:
-      </strong>
-      Writing efficient and readable R code. Good coding standards improve maintainability and collaboration.
-     </p>
-     <ul class="list-disc list-inside space-y-1 mb-2">
-      <li>
-       Prefer vectorization over loops for speed.
-      </li>
-      <li>
-       Pre-allocate vectors if loops are necessary.
-      </li>
-      <li>
-       Use clear, descriptive variable and function names.
-      </li>
-      <li>
-       Use comments and proper indentation.
-      </li>
-     </ul>
-     <pre class="bg-gray-100 rounded-md p-4 overflow-x-auto text-sm font-mono text-indigo-900">
-# BAD (slow for large n):
-sum_sq_loop &lt;- function(n) {
-  res &lt;- c() # Dynamic growing
-  for (i in 1:n) {
-    res &lt;- c(res, i^2)
-  }
-  return(sum(res))
-}
-
-# GOOD (vectorized and efficient):
-sum_sq_vectorized &lt;- function(n) {
-  return(sum((1:n)^2))
-}
-
-# GOOD (pre-allocation if loop is necessary):
-sum_sq_preallocate &lt;- function(n) {
-  res &lt;- numeric(n) # Pre-allocate vector of n zeros
-  for (i in 1:n) {
-    res[i] &lt;- i^2
-  }
-  return(sum(res))
-}
-        </pre>
-    </article>
-    <!-- 5.3 Dates and Times -->
-    <article>
-     <h3 class="text-xl font-semibold text-indigo-600 mb-2 flex items-center space-x-2">
-      <i class="fas fa-clock text-indigo-500">
-      </i>
-      <span>
-       5.3 Dates and Times
-      </span>
-     </h3>
-     <p class="mb-2">
-      <strong>
-       Concept:
-      </strong>
-      R has specialized classes for handling dates and times to perform calculations, formatting, and comparisons correctly.
-     </p>
-     <ul class="list-disc list-inside space-y-1 mb-2">
-      <li>
-       <code>
-        Date
-       </code>
-       class: stores dates without time.
-      </li>
-      <li>
-       <code>
-        POSIXct
-       </code>
-       class: stores date and time as seconds since 1970-01-01 UTC.
-      </li>
-      <li>
-       <code>
-        POSIXlt
-       </code>
-       class: stores date and time as a list of components.
-      </li>
-      <li>
-       Functions:
-       <code>
-        Sys.Date()
-       </code>
-       ,
-       <code>
-        Sys.time()
-       </code>
-       ,
-       <code>
-        as.Date()
-       </code>
-       ,
-       <code>
-        as.POSIXct()
-       </code>
-       ,
-       <code>
-        as.POSIXlt()
-       </code>
-       ,
-       <code>
-        strptime()
-       </code>
-       ,
-       <code>
-        format()
-       </code>
-       .
-      </li>
-      <li>
-       Format codes:
-       <code>
-        %Y
-       </code>
-       ,
-       <code>
-        %m
-       </code>
-       ,
-       <code>
-        %d
-       </code>
-       ,
-       <code>
-        %H
-       </code>
-       ,
-       <code>
-        %M
-       </code>
-       ,
-       <code>
-        %S
-       </code>
-       ,
-       <code>
-        %b
-       </code>
-       ,
-       <code>
-        %B
-       </code>
-       , etc.
-      </li>
-     </ul>
-     <pre class="bg-gray-100 rounded-md p-4 overflow-x-auto text-sm font-mono text-indigo-900">
-# Current date and time
-today &lt;- Sys.Date()
-now &lt;- Sys.time()
-print(today)
-print(now)
-
-# Convert character to Date
-date_str1 &lt;- "2023-10-27"
-date_obj1 &lt;- as.Date(date_str1)
-print(date_obj1) # 2023-10-27
-
-date_str2 &lt;- "15/01/2024"
-date_obj2 &lt;- as.Date(date_str2, format = "%d/%m/%Y")
-print(date_obj2) # 2024-01-15
-
-# Convert character to POSIXct
-datetime_str1 &lt;- "2023-10-27 14:30:00"
-datetime_obj1 &lt;- as.POSIXct(datetime_str1)
-print(datetime_obj1)
-
-# Using strptime for complex formats
-custom_datetime_str &lt;- "Oct 27, 2023 2:30 PM"
-custom_datetime_obj &lt;- strptime(custom_datetime_str, "%b %d, %Y %I:%M %p")
-print(custom_datetime_obj)
-
-# Calculations with dates/times
-date1 &lt;- as.Date("2023-01-01")
-date2 &lt;- as.Date("2023-01-10")
-diff_days &lt;- date2 - date1
-print(diff_days) # Time difference of 9 days
-        </pre>
-     <h4 class="mt-4 font-semibold text-indigo-700">
-      Questions &amp; Brief Answers:
-     </h4>
-     <ol class="list-decimal list-inside space-y-1 text-gray-700">
-      <li>
-       <strong>
-        Q:
-       </strong>
-       What is lexical scoping in R, and how does it determine the value of a variable within a function?
-       <br/>
-       <strong>
-        A:
-       </strong>
-       R looks for a variable's value in the environment where the function was defined, not where it was called. It follows a search path from local to parent environments, then global, then loaded packages.
-      </li>
-      <li>
-       <strong>
-        Q:
-       </strong>
-       Explain why vectorized operations are generally preferred over for loops for performance in R, using an example.
-       <br/>
-       <strong>
-        A:
-       </strong>
-       Vectorized operations are faster because they leverage R's underlying C/Fortran code to perform operations on entire vectors at once, avoiding the overhead of R's loop interpreter. Example:
-       <code>
-        sum(x^2)
-       </code>
-       is faster than a for loop that squares and sums elements one by one.
-      </li>
-      <li>
-       <strong>
-        Q:
-       </strong>
-       What R class would you typically use to store a date without time information? How about a date and time?
-       <br/>
-       <strong>
-        A:
-       </strong>
-       <code>
-        Date
-       </code>
-       class for dates only.
-       <code>
-        POSIXct
-       </code>
-       or
-       <code>
-        POSIXlt
-       </code>
-       for date and time.
-      </li>
-      <li>
-       <strong>
-        Q:
-       </strong>
-       You have a character string "June 02, 2025 10:45 AM". How would you convert it into a POSIXct object in R?
-       <br/>
-       <strong>
-        A:
-       </strong>
-       <code>
-        as.POSIXct("June 02, 2025 10:45 AM", format = "%B %d, %Y %I:%M %p")
-       </code>
-       .
-      </li>
-     </ol>
-    </article>
-   </section>
-   <!-- Module 6 -->
-   <section class="bg-white rounded-lg shadow-lg p-8" data-animate="" id="module6">
-    <div class="flex items-center space-x-4 mb-6">
-     <img alt="Illustration of gears and magnifying glass representing debugging and apply functions" class="rounded-full border-4 border-indigo-600 pulse-slow" height="80" loading="lazy" src="https://storage.googleapis.com/a1aa/image/368c5356-f828-4c8d-8fcd-609688a830fb.jpg" width="80"/>
-     <h2 class="text-3xl font-extrabold text-indigo-700">
-      Module 6: Loop Functions, Debugging &amp; Simulation
-     </h2>
-    </div>
-    <!-- 6.1 Loop Functions (Apply Family) -->
-    <article class="mb-8">
-     <h3 class="text-xl font-semibold text-indigo-600 mb-2 flex items-center space-x-2">
-      <i class="fas fa-sync-alt text-indigo-500">
-      </i>
-      <span>
-       6.1 Loop Functions (Apply Family)
-      </span>
-     </h3>
-     <p class="mb-2">
-      <strong>
-       Concept:
-      </strong>
-      A set of higher-order functions that provide efficient and idiomatic ways to apply a function over elements of lists, vectors, or margins of arrays/matrices, reducing the need for explicit loops.
-     </p>
-     <ul class="list-disc list-inside space-y-1 mb-2">
-      <li>
-       <code>
-        lapply(X, FUN, ...)
-       </code>
-       : Applies
-       <code>
-        FUN
-       </code>
-       to each element of a list
-       <code>
-        X
-       </code>
-       . Returns a list.
-      </li>
-      <li>
-       <code>
-        sapply(X, FUN, ...)
-       </code>
-       : Simplifies the result of
-       <code>
-        lapply
-       </code>
-       to vector or matrix if possible.
-      </li>
-      <li>
-       <code>
-        apply(X, MARGIN, FUN, ...)
-       </code>
-       : Applies
-       <code>
-        FUN
-       </code>
-       over rows (
-       <code>
-        MARGIN=1
-       </code>
-       ) or columns (
-       <code>
-        MARGIN=2
-       </code>
-       ) of a matrix or array.
-      </li>
-      <li>
-       <code>
-        mapply(FUN, ...)
-       </code>
-       : Multivariate version of
-       <code>
-        sapply
-       </code>
-       , applies
-       <code>
-        FUN
-       </code>
-       to multiple arguments.
-      </li>
-      <li>
-       <code>
-        tapply(X, INDEX, FUN, ...)
-       </code>
-       : Applies
-       <code>
-        FUN
-       </code>
-       to subsets of vector
-       <code>
-        X
-       </code>
-       defined by factors
-       <code>
-        INDEX
-       </code>
-       .
-      </li>
-      <li>
-       <code>
-        split(x, f)
-       </code>
-       : Splits vector or data frame
-       <code>
-        x
-       </code>
-       into groups defined by factor
-       <code>
-        f
-       </code>
-       .
-      </li>
-     </ul>
-     <pre class="bg-gray-100 rounded-md p-4 overflow-x-auto text-sm font-mono text-indigo-900">
-my_list_num &lt;- list(a = c(1,2), b = c(3,4,5))
-
-# lapply
-lapply(my_list_num, sum)
-# Output: list(a = 3, b = 12)
-
-# sapply
-sapply(my_list_num, sum)
-# Output: a  b
-#         3 12
-
-my_matrix &lt;- matrix(1:9, nrow = 3)
-# apply (sum of rows)
-apply(my_matrix, 1, sum) # 12 15 18
-
-# apply (mean of columns)
-apply(my_matrix, 2, mean) # 2 5 8
-
-# mapply
-mapply(sum, 1:3, 10:12) # sum(1,10), sum(2,11), sum(3,12)
-# Output: 11 13 15
-
-# tapply and split
-data_values &lt;- c(10, 12, 15, 11, 20, 18)
-categories &lt;- factor(c("A", "B", "A", "B", "A", "B"))
-tapply(data_values, categories, mean)
-# Output: A: 15, B: 13.666
-
-split_data &lt;- split(data_values, categories)
-print(split_data)
-# $A
-# [1] 10 15 20
-# $B
-# [1] 12 11 18
-        </pre>
-    </article>
-    <!-- 6.2 Debugging Tools -->
-    <article class="mb-8">
-     <h3 class="text-xl font-semibold text-indigo-600 mb-2 flex items-center space-x-2">
-      <i class="fas fa-bug text-indigo-500">
-      </i>
-      <span>
-       6.2 Debugging Tools
-      </span>
-     </h3>
-     <p class="mb-2">
-      <strong>
-       Concept:
-      </strong>
-      Tools and techniques to identify and fix errors (bugs) in your R code.
-     </p>
-     <ul class="list-disc list-inside space-y-1 mb-2">
-      <li>
-       <code>
-        traceback()
-       </code>
-       : Shows the sequence of function calls that led to an error.
-      </li>
-      <li>
-       <code>
-        debug(function_name)
-       </code>
-       : Puts a function into debug mode to step through code.
-      </li>
-      <li>
-       <code>
-        browser()
-       </code>
-       : Pauses execution at a point for interactive debugging.
-      </li>
-      <li>
-       <code>
-        recover()
-       </code>
-       : Post-mortem debugger to navigate call stack on error.
-      </li>
-      <li>
-       <code>
-        stop()
-       </code>
-       ,
-       <code>
-        warning()
-       </code>
-       ,
-       <code>
-        message()
-       </code>
-       : Generate errors, warnings, and messages.
-      </li>
-     </ul>
-     <pre class="bg-gray-100 rounded-md p-4 overflow-x-auto text-sm font-mono text-indigo-900">
-my_buggy_function &lt;- function(x, y) {
-  z &lt;- x / y # This will error if y is 0
-  print(z)
-}
-
-# Example of traceback
-# my_buggy_function(10, 0) # This would cause an error
-# traceback() # Shows where the error occurred
-
-# Example of debug
-debug(my_buggy_function)
-# my_buggy_function(10, 2) # Now enters debug mode
-
-# Example of browser()
-another_function &lt;- function(data) {
-  if (!is.numeric(data)) {
-    stop("Data must be numeric.")
-  }
-  browser() # Pause execution here
-  mean_val &lt;- mean(data)
-  return(mean_val)
-}
-# another_function(c(1,2,3)) # Execution pauses at browser()
-# another_function("hello")  # Stops with error
-        </pre>
-    </article>
-    <!-- 6.3 The str Function -->
-    <article class="mb-8">
-     <h3 class="text-xl font-semibold text-indigo-600 mb-2 flex items-center space-x-2">
-      <i class="fas fa-info-circle text-indigo-500">
-      </i>
-      <span>
-       6.3 The str Function
-      </span>
-     </h3>
-     <p class="mb-2">
-      <strong>
-       Concept:
-      </strong>
-      <code>
-       str()
-      </code>
-      stands for "structure." It's a highly useful function for compactly displaying the internal structure of any R object.
-     </p>
-     <ul class="list-disc list-inside space-y-1 mb-2">
-      <li>
-       Shows class, type, dimensions, names, and a few initial values.
-      </li>
-      <li>
-       Crucial for quickly understanding what an object contains without printing its entire content.
-      </li>
-     </ul>
-     <pre class="bg-gray-100 rounded-md p-4 overflow-x-auto text-sm font-mono text-indigo-900">
-my_df &lt;- data.frame(
-  id = 1:3,
-  name = c("A", "B", "C"),
-  is_active = c(TRUE, FALSE, TRUE),
-  scores = list(c(10, 20), c(30, 40), c(50))
-)
-str(my_df)
-# 'data.frame': 3 obs. of 4 variables:
-# $ id       : int 1 2 3
-# $ name     : Factor w/ 3 levels "A","B","C": 1 2 3
-# $ is_active: logi TRUE FALSE TRUE
-# $ scores   :List of 3
-# ..$ : num 10 20
-# ..$ : num 30 40
-# ..$ : num 50
-
-str(c(1, 2, 3)) # num [1:3] 1 2 3
-str(list(a = 1, b = "hello")) # List of 2: $ a: num 1, $ b: chr "hello"
-        </pre>
-    </article>
-    <!-- 6.4 Simulation -->
-    <article class="mb-8">
-     <h3 class="text-xl font-semibold text-indigo-600 mb-2 flex items-center space-x-2">
-      <i class="fas fa-dice text-indigo-500">
-      </i>
-      <span>
-       6.4 Simulation
-      </span>
-     </h3>
-     <p class="mb-2">
-      <strong>
-       Concept:
-      </strong>
-      Generating random numbers or data based on specific probability distributions. Crucial for statistical modeling, bootstrapping, Monte Carlo simulations, etc.
-     </p>
-     <ul class="list-disc list-inside space-y-1 mb-2">
-      <li>
-       <code>
-        set.seed(seed_value)
-       </code>
-       : Ensures reproducibility.
-      </li>
-      <li>
-       Random Number Generators:
-       <code>
-        rnorm()
-       </code>
-       ,
-       <code>
-        runif()
-       </code>
-       ,
-       <code>
-        rpois()
-       </code>
-       ,
-       <code>
-        rbinom()
-       </code>
-       .
-      </li>
-      <li>
-       <code>
-        sample()
-       </code>
-       : Randomly samples elements from a vector.
-      </li>
-     </ul>
-     <pre class="bg-gray-100 rounded-md p-4 overflow-x-auto text-sm font-mono text-indigo-900">
-# Ensure reproducibility
-set.seed(42)
-
-# Generate 5 random numbers from a standard normal distribution (mean=0, sd=1)
-norm_samples &lt;- rnorm(5)
-print(norm_samples)
-
-# Generate 3 random numbers from a uniform distribution between 0 and 10
-unif_samples &lt;- runif(3, min = 0, max = 10)
-print(unif_samples)
-
-# Simulate rolling a die 10 times
-die_rolls &lt;- sample(1:6, 10, replace = TRUE)
-print(die_rolls)
-
-# Randomly select 2 names from a list without replacement
-names &lt;- c("Alice", "Bob", "Charlie", "David")
-selected_names &lt;- sample(names, 2, replace = FALSE)
-print(selected_names)
-        </pre>
-    </article>
-    <!-- 6.5 R Profiler -->
-    <article>
-     <h3 class="text-xl font-semibold text-indigo-600 mb-2 flex items-center space-x-2">
-      <i class="fas fa-chart-line text-indigo-500">
-      </i>
-      <span>
-       6.5 R Profiler
-      </span>
-     </h3>
-     <p class="mb-2">
-      <strong>
-       Concept:
-      </strong>
-      A tool to analyze the performance of your R code by measuring how much time is spent in different parts of your functions. Helps identify bottlenecks.
-     </p>
-     <ul class="list-disc list-inside space-y-1 mb-2">
-      <li>
-       <code>
-        Rprof(filename = "Rprof.out", interval = 0.02, memory = "none")
-       </code>
-       : Starts the profiler.
-      </li>
-      <li>
-       <code>
-        Rprof(NULL)
-       </code>
-       : Stops the profiler.
-      </li>
-      <li>
-       <code>
-        summaryRprof("Rprof.out")
-       </code>
-       : Summarizes profiling data.
-      </li>
-      <li>
-       Focus on optimizing functions that consume the most time.
-      </li>
-     </ul>
-     <pre class="bg-gray-100 rounded-md p-4 overflow-x-auto text-sm font-mono text-indigo-900">
-# Start profiling
-# Rprof("my_profile.out")
-
-# Your code that you want to profile
-# for (i in 1:1000) {
-#   mean(rnorm(1000))
-# }
-
-# Stop profiling
-# Rprof(NULL)
-
-# Summarize results
-# summaryRprof("my_profile.out")
-        </pre>
-     <h4 class="mt-4 font-semibold text-indigo-700">
-      Questions &amp; Brief Answers:
-     </h4>
-     <ol class="list-decimal list-inside space-y-1 text-gray-700">
-      <li>
-       <strong>
-        Q:
-       </strong>
-       When would you choose
-       <code>
-        lapply()
-       </code>
-       over
-       <code>
-        sapply()
-       </code>
-       ?
-       <br/>
-       <strong>
-        A:
-       </strong>
-       When you specifically need the output to be a list or want to avoid
-       <code>
-        sapply
-       </code>
-       's simplification.
-      </li>
-      <li>
-       <strong>
-        Q:
-       </strong>
-       You have a matrix
-       <code>
-        my_data_matrix
-       </code>
-       . How would you calculate the mean of each column using an apply function?
-       <br/>
-       <strong>
-        A:
-       </strong>
-       <code>
-        apply(my_data_matrix, 2, mean)
-       </code>
-       .
-      </li>
-      <li>
-       <strong>
-        Q:
-       </strong>
-       What is the main purpose of
-       <code>
-        tapply()
-       </code>
-       , and how is it different from
-       <code>
-        apply()
-       </code>
-       ?
-       <br/>
-       <strong>
-        A:
-       </strong>
-       <code>
-        tapply()
-       </code>
-       applies a function to subsets of a vector based on categories (factors), performing a "group by" operation.
-       <code>
-        apply()
-       </code>
-       applies a function over rows or columns of an array or matrix.
-      </li>
-      <li>
-       <strong>
-        Q:
-       </strong>
-       You've run your code and got an error. What is the first debugging function you should use to get a basic understanding of where the error originated?
-       <br/>
-       <strong>
-        A:
-       </strong>
-       <code>
-        traceback()
-       </code>
-       .
-      </li>
-      <li>
-       <strong>
-        Q:
-       </strong>
-       You want to generate 10 random integers between 1 and 100, and ensure that if you run the code again, you get the same sequence of "random" numbers. How would you do this?
-       <br/>
-       <strong>
-        A:
-       </strong>
-       Use
-       <code>
-        set.seed(some_number)
-       </code>
-       (e.g.,
-       <code>
-        set.seed(123)
-       </code>
-       ) before calling
-       <code>
-        sample(1:100, 10)
-       </code>
-       .
-      </li>
-      <li>
-       <strong>
-        Q:
-       </strong>
-       Describe the output of
-       <code>
-        str(my_data_frame)
-       </code>
-       and explain its utility.
-       <br/>
-       <strong>
-        A:
-       </strong>
-       <code>
-        str()
-       </code>
-       provides a concise summary of the internal structure of
-       <code>
-        my_data_frame
-       </code>
-       , showing its class, dimensions, and for each column, its name, data type, and a few initial values. It's useful for quickly inspecting and understanding the data structure without printing the entire object.
-      </li>
-     </ol>
-    </article>
+   <!-- Contact Section -->
+   <section class="mb-16 bg-white rounded-lg shadow-md p-8" id="contact">
+    <h2 class="text-3xl font-semibold text-gray-800 mb-4">
+     Contact Us
+    </h2>
+    <form class="max-w-lg mx-auto space-y-6" id="contactForm">
+     <div>
+      <label class="block text-gray-700 font-semibold mb-1" for="name">
+       Name
+      </label>
+      <input class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-indigo-600" id="name" name="name" required="" type="text"/>
+     </div>
+     <div>
+      <label class="block text-gray-700 font-semibold mb-1" for="email">
+       Email
+      </label>
+      <input class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-indigo-600" id="email" name="email" required="" type="email"/>
+     </div>
+     <div>
+      <label class="block text-gray-700 font-semibold mb-1" for="message">
+       Message
+      </label>
+      <textarea class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-indigo-600" id="message" name="message" required="" rows="4"></textarea>
+     </div>
+     <button class="bg-indigo-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-indigo-700 transition" type="submit">
+      Send Message
+     </button>
+    </form>
    </section>
   </main>
-  <footer class="bg-indigo-600 text-white py-6 mt-20">
-   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <p class="text-sm">
-     © 2024 R Programming Interactive Guide. All rights reserved.
-    </p>
-    <p class="mt-1 text-xs italic">
-     Icons by Font Awesome, images placeholders from placehold.co
+  <!-- Cart Modal -->
+  <div class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50" id="cartModal">
+   <div class="bg-white rounded-lg shadow-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6 relative">
+    <button class="absolute top-4 right-4 text-gray-600 hover:text-indigo-600 text-2xl font-bold" id="closeCartBtn">
+     ×
+    </button>
+    <h3 class="text-2xl font-semibold mb-4">
+     Your Cart
+    </h3>
+    <div class="space-y-4" id="cartItems">
+     <!-- Cart items will be dynamically inserted here -->
+    </div>
+    <div class="mt-6 flex justify-between items-center border-t pt-4">
+     <span class="text-xl font-semibold">
+      Total:
+     </span>
+     <span class="text-xl font-bold text-indigo-600" id="cartTotal">
+      $0.00
+     </span>
+    </div>
+    <div class="mt-6 flex justify-end space-x-4">
+     <button class="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition" id="clearCartBtn">
+      Clear Cart
+     </button>
+     <button class="bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-700 transition" id="checkoutBtn">
+      Checkout
+     </button>
+    </div>
+   </div>
+  </div>
+  <!-- Login Modal -->
+  <div class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50" id="loginModal">
+   <div class="bg-white rounded-lg shadow-lg max-w-md w-full p-6 relative">
+    <button class="absolute top-4 right-4 text-gray-600 hover:text-indigo-600 text-2xl font-bold" id="closeLoginBtn">
+     ×
+    </button>
+    <h3 class="text-2xl font-semibold mb-6 text-center">
+     Login to ShopEase
+    </h3>
+    <form class="space-y-6" id="loginForm">
+     <div>
+      <label class="block text-gray-700 font-semibold mb-1" for="emailLogin">
+       Email
+      </label>
+      <input class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-indigo-600" id="emailLogin" name="emailLogin" required="" type="email"/>
+     </div>
+     <div>
+      <label class="block text-gray-700 font-semibold mb-1" for="passwordLogin">
+       Password
+      </label>
+      <input class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-indigo-600" id="passwordLogin" name="passwordLogin" required="" type="password"/>
+     </div>
+     <button class="w-full bg-indigo-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-indigo-700 transition" type="submit">
+      Login
+     </button>
+    </form>
+    <p class="mt-4 text-center text-gray-600">
+     Don't have an account?
+     <button class="text-indigo-600 font-semibold hover:underline" id="showRegisterBtn">
+      Register
+     </button>
     </p>
    </div>
-  </footer>
+  </div>
+  <!-- Register Modal -->
+  <div class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50" id="registerModal">
+   <div class="bg-white rounded-lg shadow-lg max-w-md w-full p-6 relative">
+    <button class="absolute top-4 right-4 text-gray-600 hover:text-indigo-600 text-2xl font-bold" id="closeRegisterBtn">
+     ×
+    </button>
+    <h3 class="text-2xl font-semibold mb-6 text-center">
+     Register at ShopEase
+    </h3>
+    <form class="space-y-6" id="registerForm">
+     <div>
+      <label class="block text-gray-700 font-semibold mb-1" for="emailRegister">
+       Email
+      </label>
+      <input class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-indigo-600" id="emailRegister" name="emailRegister" required="" type="email"/>
+     </div>
+     <div>
+      <label class="block text-gray-700 font-semibold mb-1" for="passwordRegister">
+       Password
+      </label>
+      <input class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-indigo-600" id="passwordRegister" name="passwordRegister" required="" type="password"/>
+     </div>
+     <button class="w-full bg-indigo-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-indigo-700 transition" type="submit">
+      Register
+     </button>
+    </form>
+    <p class="mt-4 text-center text-gray-600">
+     Already have an account?
+     <button class="text-indigo-600 font-semibold hover:underline" id="showLoginBtn">
+      Login
+     </button>
+    </p>
+   </div>
+  </div>
+  <!-- Checkout Modal -->
+  <div class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50" id="checkoutModal">
+   <div class="bg-white rounded-lg shadow-lg max-w-md w-full p-6 relative">
+    <button class="absolute top-4 right-4 text-gray-600 hover:text-indigo-600 text-2xl font-bold" id="closeCheckoutBtn">
+     ×
+    </button>
+    <h3 class="text-2xl font-semibold mb-6 text-center">
+     Checkout
+    </h3>
+    <form class="space-y-6" id="checkoutForm">
+     <div>
+      <label class="block text-gray-700 font-semibold mb-1" for="fullName">
+       Full Name
+      </label>
+      <input class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-indigo-600" id="fullName" name="fullName" required="" type="text"/>
+     </div>
+     <div>
+      <label class="block text-gray-700 font-semibold mb-1" for="address">
+       Address
+      </label>
+      <textarea class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-indigo-600" id="address" name="address" required="" rows="3"></textarea>
+     </div>
+     <div>
+      <label class="block text-gray-700 font-semibold mb-1" for="phone">
+       Phone Number
+      </label>
+      <input class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-indigo-600" id="phone" name="phone" required="" type="tel"/>
+     </div>
+     <button class="w-full bg-indigo-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-indigo-700 transition" type="submit">
+      Place Order
+     </button>
+    </form>
+   </div>
+  </div>
   <script>
-   // Mobile menu toggle
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
+   // Firebase configuration - Replace with your own Firebase project config
+    const firebaseConfig = {
+      apiKey: "AIzaSyD-EXAMPLE-KEY-1234567890abcdef",
+      authDomain: "your-project-id.firebaseapp.com",
+      projectId: "your-project-id",
+      storageBucket: "your-project-id.appspot.com",
+      messagingSenderId: "1234567890",
+      appId: "1:1234567890:web:abcdef123456"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+    const storage = firebase.storage();
+
+    // DOM Elements
+    const productsGrid = document.getElementById('productsGrid');
+    const cartBtn = document.getElementById('cartBtn');
+    const cartModal = document.getElementById('cartModal');
+    const closeCartBtn = document.getElementById('closeCartBtn');
+    const cartItemsContainer = document.getElementById('cartItems');
+    const cartTotalEl = document.getElementById('cartTotal');
+    const cartCountEl = document.getElementById('cartCount');
+    const clearCartBtn = document.getElementById('clearCartBtn');
+    const checkoutBtn = document.getElementById('checkoutBtn');
+
+    const loginBtn = document.getElementById('loginBtn');
+    const logoutBtn = document.getElementById('logoutBtn');
+    const loginModal = document.getElementById('loginModal');
+    const closeLoginBtn = document.getElementById('closeLoginBtn');
+    const loginForm = document.getElementById('loginForm');
+    const showRegisterBtn = document.getElementById('showRegisterBtn');
+
+    const registerModal = document.getElementById('registerModal');
+    const closeRegisterBtn = document.getElementById('closeRegisterBtn');
+    const registerForm = document.getElementById('registerForm');
+    const showLoginBtn = document.getElementById('showLoginBtn');
+
+    const checkoutModal = document.getElementById('checkoutModal');
+    const closeCheckoutBtn = document.getElementById('closeCheckoutBtn');
+    const checkoutForm = document.getElementById('checkoutForm');
+
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileLoginBtn = document.getElementById('mobileLoginBtn');
+    const mobileLogoutBtn = document.getElementById('mobileLogoutBtn');
+
+    // Cart data stored in localStorage
+    let cart = JSON.parse(localStorage.getItem('shopEaseCart')) || [];
+
+    // Products data - will be fetched from Firestore
+    let products = [];
+
+    // Utility: Format price as USD
+    function formatPrice(price) {
+      return `$${price.toFixed(2)}`;
+    }
+
+    // Render products grid
+    function renderProducts() {
+      productsGrid.innerHTML = '';
+      products.forEach(product => {
+        const productCard = document.createElement('div');
+        productCard.className = 'bg-white rounded-lg shadow-md overflow-hidden flex flex-col';
+
+        const img = document.createElement('img');
+        img.src = product.imageUrl;
+        img.alt = product.imageAlt;
+        img.className = 'w-full h-48 object-cover';
+
+        const content = document.createElement('div');
+        content.className = 'p-4 flex flex-col flex-grow';
+
+        const title = document.createElement('h3');
+        title.className = 'text-lg font-semibold text-gray-800 mb-2';
+        title.textContent = product.name;
+
+        const desc = document.createElement('p');
+        desc.className = 'text-gray-600 text-sm flex-grow';
+        desc.textContent = product.description;
+
+        const price = document.createElement('p');
+        price.className = 'text-indigo-600 font-bold mt-4 text-lg';
+        price.textContent = formatPrice(product.price);
+
+        const addToCartBtn = document.createElement('button');
+        addToCartBtn.className = 'mt-4 bg-indigo-600 text-white py-2 rounded-md hover:bg-indigo-700 transition font-semibold';
+        addToCartBtn.textContent = 'Add to Cart';
+        addToCartBtn.addEventListener('click', () => addToCart(product.id));
+
+        content.appendChild(title);
+        content.appendChild(desc);
+        content.appendChild(price);
+        content.appendChild(addToCartBtn);
+
+        productCard.appendChild(img);
+        productCard.appendChild(content);
+
+        productsGrid.appendChild(productCard);
+      });
+    }
+
+    // Add product to cart
+    function addToCart(productId) {
+      const product = products.find(p => p.id === productId);
+      if (!product) return;
+
+      const cartItem = cart.find(item => item.id === productId);
+      if (cartItem) {
+        cartItem.quantity++;
+      } else {
+        cart.push({ id: productId, quantity: 1 });
+      }
+      saveCart();
+      updateCartCount();
+      alert(`Added "${product.name}" to cart.`);
+    }
+
+    // Save cart to localStorage
+    function saveCart() {
+      localStorage.setItem('shopEaseCart', JSON.stringify(cart));
+    }
+
+    // Update cart count badge
+    function updateCartCount() {
+      const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
+      cartCountEl.textContent = totalQuantity;
+    }
+
+    // Render cart modal items
+    function renderCart() {
+      cartItemsContainer.innerHTML = '';
+      if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '<p class="text-gray-600 text-center">Your cart is empty.</p>';
+        cartTotalEl.textContent = '$0.00';
+        return;
+      }
+
+      let total = 0;
+      cart.forEach(item => {
+        const product = products.find(p => p.id === item.id);
+        if (!product) return;
+
+        const itemTotal = product.price * item.quantity;
+        total += itemTotal;
+
+        const cartItemDiv = document.createElement('div');
+        cartItemDiv.className = 'flex items-center space-x-4 border-b border-gray-200 pb-4';
+
+        const img = document.createElement('img');
+        img.src = product.imageUrl;
+        img.alt = product.imageAlt;
+        img.className = 'w-20 h-20 object-cover rounded-md';
+
+        const infoDiv = document.createElement('div');
+        infoDiv.className = 'flex-grow';
+
+        const name = document.createElement('h4');
+        name.className = 'font-semibold text-gray-800';
+        name.textContent = product.name;
+
+        const priceQty = document.createElement('p');
+        priceQty.className = 'text-gray-600';
+        priceQty.textContent = `${formatPrice(product.price)} x ${item.quantity} = ${formatPrice(itemTotal)}`;
+
+        infoDiv.appendChild(name);
+        infoDiv.appendChild(priceQty);
+
+        const qtyControls = document.createElement('div');
+        qtyControls.className = 'flex items-center space-x-2';
+
+        const minusBtn = document.createElement('button');
+        minusBtn.className = 'text-indigo-600 hover:text-indigo-800 font-bold text-xl';
+        minusBtn.textContent = '−';
+        minusBtn.addEventListener('click', () => {
+          if (item.quantity > 1) {
+            item.quantity--;
+          } else {
+            cart = cart.filter(ci => ci.id !== item.id);
+          }
+          saveCart();
+          renderCart();
+          updateCartCount();
+        });
+
+        const qtyText = document.createElement('span');
+        qtyText.className = 'w-6 text-center';
+        qtyText.textContent = item.quantity;
+
+        const plusBtn = document.createElement('button');
+        plusBtn.className = 'text-indigo-600 hover:text-indigo-800 font-bold text-xl';
+        plusBtn.textContent = '+';
+        plusBtn.addEventListener('click', () => {
+          item.quantity++;
+          saveCart();
+          renderCart();
+          updateCartCount();
+        });
+
+        qtyControls.appendChild(minusBtn);
+        qtyControls.appendChild(qtyText);
+        qtyControls.appendChild(plusBtn);
+
+        cartItemDiv.appendChild(img);
+        cartItemDiv.appendChild(infoDiv);
+        cartItemDiv.appendChild(qtyControls);
+
+        cartItemsContainer.appendChild(cartItemDiv);
+      });
+
+      cartTotalEl.textContent = formatPrice(total);
+    }
+
+    // Clear cart
+    clearCartBtn.addEventListener('click', () => {
+      if (confirm('Are you sure you want to clear your cart?')) {
+        cart = [];
+        saveCart();
+        renderCart();
+        updateCartCount();
+      }
     });
 
-    // Scroll animations
-    const animatedElements = document.querySelectorAll('[data-animate]');
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate');
-          }
+    // Show/hide modals
+    function showModal(modal) {
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+    function hideModal(modal) {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    cartBtn.addEventListener('click', () => {
+      renderCart();
+      showModal(cartModal);
+    });
+    closeCartBtn.addEventListener('click', () => hideModal(cartModal));
+
+    loginBtn.addEventListener('click', () => showModal(loginModal));
+    closeLoginBtn.addEventListener('click', () => hideModal(loginModal));
+    mobileLoginBtn.addEventListener('click', () => {
+      hideMobileMenu();
+      showModal(loginModal);
+    });
+
+    logoutBtn.addEventListener('click', () => {
+      auth.signOut();
+    });
+    mobileLogoutBtn.addEventListener('click', () => {
+      hideMobileMenu();
+      auth.signOut();
+    });
+
+    showRegisterBtn.addEventListener('click', () => {
+      hideModal(loginModal);
+      showModal(registerModal);
+    });
+    showLoginBtn.addEventListener('click', () => {
+      hideModal(registerModal);
+      showModal(loginModal);
+    });
+    closeRegisterBtn.addEventListener('click', () => hideModal(registerModal));
+
+    mobileMenuBtn.addEventListener('click', () => {
+      if (mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.remove('hidden');
+      } else {
+        mobileMenu.classList.add('hidden');
+      }
+    });
+
+    function hideMobileMenu() {
+      mobileMenu.classList.add('hidden');
+    }
+
+    // Login form submit
+    loginForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const email = loginForm.emailLogin.value.trim();
+      const password = loginForm.passwordLogin.value.trim();
+      auth.signInWithEmailAndPassword(email, password)
+        .then(() => {
+          alert('Logged in successfully!');
+          loginForm.reset();
+          hideModal(loginModal);
+        })
+        .catch(err => alert(err.message));
+    });
+
+    // Register form submit
+    registerForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const email = registerForm.emailRegister.value.trim();
+      const password = registerForm.passwordRegister.value.trim();
+      auth.createUserWithEmailAndPassword(email, password)
+        .then(() => {
+          alert('Account created successfully!');
+          registerForm.reset();
+          hideModal(registerModal);
+          hideModal(loginModal);
+        })
+        .catch(err => alert(err.message));
+    });
+
+    // Contact form submit (store messages in Firestore)
+    const contactForm = document.getElementById('contactForm');
+    contactForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const name = contactForm.name.value.trim();
+      const email = contactForm.email.value.trim();
+      const message = contactForm.message.value.trim();
+
+      db.collection('contacts').add({
+        name,
+        email,
+        message,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+      }).then(() => {
+        alert('Message sent! We will get back to you soon.');
+        contactForm.reset();
+      }).catch(err => alert('Error sending message: ' + err.message));
+    });
+
+    // Checkout modal handlers
+    checkoutBtn.addEventListener('click', () => {
+      if (cart.length === 0) {
+        alert('Your cart is empty.');
+        return;
+      }
+      hideModal(cartModal);
+      showModal(checkoutModal);
+    });
+    closeCheckoutBtn.addEventListener('click', () => hideModal(checkoutModal));
+
+    checkoutForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const fullName = checkoutForm.fullName.value.trim();
+      const address = checkoutForm.address.value.trim();
+      const phone = checkoutForm.phone.value.trim();
+
+      if (!auth.currentUser) {
+        alert('You must be logged in to place an order.');
+        hideModal(checkoutModal);
+        showModal(loginModal);
+        return;
+      }
+
+      // Prepare order data
+      const order = {
+        userId: auth.currentUser.uid,
+        fullName,
+        address,
+        phone,
+        items: cart.map(item => {
+          const product = products.find(p => p.id === item.id);
+          return {
+            productId: item.id,
+            name: product.name,
+            price: product.price,
+            quantity: item.quantity
+          };
+        }),
+        total: cart.reduce((sum, item) => {
+          const product = products.find(p => p.id === item.id);
+          return sum + product.price * item.quantity;
+        }, 0),
+        status: 'pending',
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      };
+
+      db.collection('orders').add(order)
+        .then(() => {
+          alert('Order placed successfully! Thank you for shopping with us.');
+          cart = [];
+          saveCart();
+          updateCartCount();
+          checkoutForm.reset();
+          hideModal(checkoutModal);
+        })
+        .catch(err => alert('Error placing order: ' + err.message));
+    });
+
+    // Auth state change listener
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        loginBtn.classList.add('hidden');
+        logoutBtn.classList.remove('hidden');
+        mobileLoginBtn.classList.add('hidden');
+        mobileLogoutBtn.classList.remove('hidden');
+      } else {
+        loginBtn.classList.remove('hidden');
+        logoutBtn.classList.add('hidden');
+        mobileLoginBtn.classList.remove('hidden');
+        mobileLogoutBtn.classList.add('hidden');
+      }
+    });
+
+    // Load products from Firestore
+    function loadProducts() {
+      db.collection('products').get()
+        .then(snapshot => {
+          products = [];
+          snapshot.forEach(doc => {
+            const data = doc.data();
+            products.push({
+              id: doc.id,
+              name: data.name,
+              description: data.description,
+              price: data.price,
+              imageUrl: data.imageUrl,
+              imageAlt: data.imageAlt
+            });
+          });
+          renderProducts();
+        })
+        .catch(err => {
+          console.error('Error loading products:', err);
+          // Fallback: load sample products if Firestore fails
+          loadSampleProducts();
         });
-      },
-      { threshold: 0.1 }
-    );
-    animatedElements.forEach((el) => observer.observe(el));
+    }
+
+    // Sample products fallback
+    function loadSampleProducts() {
+      products = [
+        {
+          id: 'prod1',
+          name: 'Wireless Headphones',
+          description: 'High-quality wireless headphones with noise cancellation.',
+          price: 99.99,
+          imageUrl: 'https://placehold.co/400x300?text=Wireless+Headphones',
+          imageAlt: 'Black wireless headphones with cushioned ear cups on a white background'
+        },
+        {
+          id: 'prod2',
+          name: 'Smartwatch',
+          description: 'Stylish smartwatch with fitness tracking and notifications.',
+          price: 149.99,
+          imageUrl: 'https://placehold.co/400x300?text=Smartwatch',
+          imageAlt: 'Modern smartwatch with black strap displaying time and fitness stats'
+        },
+        {
+          id: 'prod3',
+          name: 'Bluetooth Speaker',
+          description: 'Portable Bluetooth speaker with rich sound and deep bass.',
+          price: 59.99,
+          imageUrl: 'https://placehold.co/400x300?text=Bluetooth+Speaker',
+          imageAlt: 'Compact black Bluetooth speaker on a wooden table with music notes'
+        },
+        {
+          id: 'prod4',
+          name: 'Gaming Mouse',
+          description: 'Ergonomic gaming mouse with customizable buttons and RGB lighting.',
+          price: 39.99,
+          imageUrl: 'https://placehold.co/400x300?text=Gaming+Mouse',
+          imageAlt: 'Black gaming mouse with RGB lighting on a dark background'
+        },
+        {
+          id: 'prod5',
+          name: '4K Monitor',
+          description: 'Ultra HD 4K monitor with vibrant colors and wide viewing angles.',
+          price: 299.99,
+          imageUrl: 'https://placehold.co/400x300?text=4K+Monitor',
+          imageAlt: 'Sleek 4K computer monitor displaying colorful graphics on a desk'
+        },
+        {
+          id: 'prod6',
+          name: 'Mechanical Keyboard',
+          description: 'Mechanical keyboard with tactile switches and customizable keys.',
+          price: 89.99,
+          imageUrl: 'https://placehold.co/400x300?text=Mechanical+Keyboard',
+          imageAlt: 'Mechanical keyboard with RGB backlighting on a black desk'
+        },
+        {
+          id: 'prod7',
+          name: 'Fitness Tracker',
+          description: 'Lightweight fitness tracker with heart rate and sleep monitoring.',
+          price: 49.99,
+          imageUrl: 'https://placehold.co/400x300?text=Fitness+Tracker',
+          imageAlt: 'Slim fitness tracker with black band showing heart rate on screen'
+        },
+        {
+          id: 'prod8',
+          name: 'DSLR Camera',
+          description: 'Professional DSLR camera with interchangeable lenses and 24MP sensor.',
+          price: 499.99,
+          imageUrl: 'https://placehold.co/400x300?text=DSLR+Camera',
+          imageAlt: 'Black DSLR camera with lens on a white background'
+        },
+        {
+          id: 'prod9',
+          name: 'Laptop Backpack',
+          description: 'Durable laptop backpack with multiple compartments and USB charging port.',
+          price: 69.99,
+          imageUrl: 'https://placehold.co/400x300?text=Laptop+Backpack',
+          imageAlt: 'Black laptop backpack standing upright on a gray surface'
+        },
+        {
+          id: 'prod10',
+          name: 'Wireless Charger',
+          description: 'Fast wireless charger compatible with all Qi-enabled devices.',
+          price: 29.99,
+          imageUrl: 'https://placehold.co/400x300?text=Wireless+Charger',
+          imageAlt: 'Round black wireless charger with smartphone placed on top'
+        },
+        {
+          id: 'prod11',
+          name: 'Noise Cancelling Earbuds',
+          description: 'Compact earbuds with active noise cancellation and long battery life.',
+          price: 79.99,
+          imageUrl: 'https://placehold.co/400x300?text=Noise+Cancelling+Earbuds',
+          imageAlt: 'Pair of black noise cancelling earbuds with charging case on white background'
+        },
+        {
+          id: 'prod12',
+          name: 'Smart Home Hub',
+          description: 'Voice-controlled smart home hub compatible with multiple devices.',
+          price: 129.99,
+          imageUrl: 'https://placehold.co/400x300?text=Smart+Home+Hub',
+          imageAlt: 'Small smart home hub device with glowing blue ring on a wooden table'
+        },
+        {
+          id: 'prod13',
+          name: 'Electric Toothbrush',
+          description: 'Rechargeable electric toothbrush with multiple cleaning modes.',
+          price: 39.99,
+          imageUrl: 'https://placehold.co/400x300?text=Electric+Toothbrush',
+          imageAlt: 'White electric toothbrush standing on charging base on bathroom counter'
+        },
+        {
+          id: 'prod14',
+          name: 'Portable Projector',
+          description: 'Compact portable projector with HD resolution and built-in speakers.',
+          price: 199.99,
+          imageUrl: 'https://placehold.co/400x300?text=Portable+Projector',
+          imageAlt: 'Small black portable projector projecting image on a white wall'
+        },
+        {
+          id: 'prod15',
+          name: 'Action Camera',
+          description: 'Waterproof action camera with 4K video recording and image stabilization.',
+          price: 149.99,
+          imageUrl: 'https://placehold.co/400x300?text=Action+Camera',
+          imageAlt: 'Compact black action camera with waterproof case on a rocky surface'
+        }
+      ];
+      renderProducts();
+    }
+
+    // Initialize app
+    function init() {
+      updateCartCount();
+      loadProducts();
+    }
+
+    init();
   </script>
  </body>
 </html>
